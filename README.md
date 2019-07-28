@@ -5,6 +5,8 @@
 
 #### 软件架构
 软件架构说明
+ spring boot
+ html+css+js
 
 
 #### 安装教程
