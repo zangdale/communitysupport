@@ -1,0 +1,13 @@
+.background-picture{
+    background:url(../picture/tiananmen-003.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-size: cover;
+    width: auto;
+    height: 800px;
+}
+
+.card-style{
+    margin-top: 0 !important;
+}
