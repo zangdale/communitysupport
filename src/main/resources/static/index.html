@@ -4,15 +4,32 @@
         <meta charset="UTF-8">
         <title>智慧医养公共服务平台</title>
     </head>
-    <body class="mdui-theme-primary-red mdui-theme-accent-yellow">
+    <body class="mdui-theme-primary-red mdui-theme-accent-orange">
         <div class="background-picture">
             <div class="mdui-toolbar mdui-color-theme mdui-shadow-5">
                 <span class="mdui-typo-title">智慧医养公共服务平台</span>
                 <div class="mdui-toolbar-spacer"></div>
-                <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i
+                <a id="button_login" class="mdui-btn mdui-btn-icon mdui-ripple-white"><i
                         class="mdui-icon material-icons">account_circle</i></a>
             </div>
             <div class="mdui-container">
+                <div class="mdui-dialog mdui-dialog-prompt" id="dialog_login">
+                    <div class="mdui-dialog-content">
+                        <div class="mdui-dialog-title">登录账号</div>
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">账号</label>
+                            <input class="mdui-textfield-input" type="text" id="input_account"/>
+                        </div>
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">密码</label>
+                            <input class="mdui-textfield-input" type="password" id="input_passwd"/>
+                        </div>
+                        <div class="mdui-dialog-actions">
+                            <button class="mdui-btn mdui-text-color-black mdui-ripple" mdui-dialog-cancel>取消</button>
+                            <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>登录</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-m-t-2">
                     <div class="mdui-col mdui-m-t-2">
                         <div class="mdui-card mdui-hoverable mdui-ripple">
@@ -58,6 +75,7 @@
         </div>
     </body>
     <script src="./js/mdui.js"></script>
+    <script src="js/myjs.js"></script>
     <link rel="stylesheet" href="./css/mdui.css">
     <link rel="stylesheet" href="./css/mycss.css">
 </html>
