@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.VideoMapper">
+    <resultMap id="videoEntityMap" type="com.didi.domain.VideoEntity">
+            <result column="v_id" property="vId"/>
+            <result column="v_name" property="vName"/>
+            <result column="v_type" property="vType"/>
+            <result column="v_url" property="vUrl"/>
+        </resultMap>
+
+    <sql id="fields">
+        v_id,v_name,v_type,v_url
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="vId != null">v_id,</if>
+            <if test="vName != null">v_name,</if>
+            <if test="vType != null">v_type,</if>
+            <if test="vUrl != null">v_url,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="vId != null">#{vId},</if>
+            <if test="vName != null">#{vName},</if>
+            <if test="vType != null">#{vType},</if>
+            <if test="vUrl != null">#{vUrl},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="vId != null">AND v_id=#{vId}</if>
+            <if test="vName != null">AND v_name=#{vName}</if>
+            <if test="vType != null">AND v_type=#{vType}</if>
+            <if test="vUrl != null">AND v_url=#{vUrl}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="vId != null">v_id=#{vId},</if>
+                <if test="vName != null">v_name=#{vName},</if>
+                <if test="vType != null">v_type=#{vType},</if>
+                <if test="vUrl != null">v_url=#{vUrl},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="videoEntityMap">
+        SELECT <include refid="fields"/> FROM video WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByVId" parameterType="Object" resultMap="videoEntityMap">
+        SELECT <include refid="fields"/> FROM video WHERE v_id=#{vId}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO video(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE video <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

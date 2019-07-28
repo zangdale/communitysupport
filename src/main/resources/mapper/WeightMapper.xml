@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.WeightMapper">
+    <resultMap id="weightEntityMap" type="com.didi.domain.WeightEntity">
+            <result column="w_id" property="wId"/>
+            <result column="w_userid" property="wUserid"/>
+            <result column="w_number" property="wNumber"/>
+            <result column="w_date" property="wDate"/>
+        </resultMap>
+
+    <sql id="fields">
+        w_id,w_userid,w_number,w_date
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="wId != null">w_id,</if>
+            <if test="wUserid != null">w_userid,</if>
+            <if test="wNumber != null">w_number,</if>
+            <if test="wDate != null">w_date,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="wId != null">#{wId},</if>
+            <if test="wUserid != null">#{wUserid},</if>
+            <if test="wNumber != null">#{wNumber},</if>
+            <if test="wDate != null">#{wDate},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="wId != null">AND w_id=#{wId}</if>
+            <if test="wUserid != null">AND w_userid=#{wUserid}</if>
+            <if test="wNumber != null">AND w_number=#{wNumber}</if>
+            <if test="wDate != null">AND w_date=#{wDate}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="wId != null">w_id=#{wId},</if>
+                <if test="wUserid != null">w_userid=#{wUserid},</if>
+                <if test="wNumber != null">w_number=#{wNumber},</if>
+                <if test="wDate != null">w_date=#{wDate},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="weightEntityMap">
+        SELECT <include refid="fields"/> FROM weight WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByWId" parameterType="Object" resultMap="weightEntityMap">
+        SELECT <include refid="fields"/> FROM weight WHERE w_id=#{wId}
+    </select>
+        
+    <select id="getByWUserid" parameterType="Object" resultMap="weightEntityMap">
+        SELECT <include refid="fields"/> FROM weight WHERE w_userid=#{wUserid}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO weight(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE weight <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

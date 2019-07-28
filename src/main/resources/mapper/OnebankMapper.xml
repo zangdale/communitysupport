@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.OnebankMapper">
+    <resultMap id="onebankEntityMap" type="com.didi.domain.OnebankEntity">
+            <result column="o_id" property="oId"/>
+            <result column="o_title" property="oTitle"/>
+            <result column="o_answer1" property="oAnswer1"/>
+            <result column="o_answer2" property="oAnswer2"/>
+            <result column="o_answer3" property="oAnswer3"/>
+            <result column="o_right" property="oRight"/>
+        </resultMap>
+
+    <sql id="fields">
+        o_id,o_title,o_answer1,o_answer2,o_answer3,o_right
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="oId != null">o_id,</if>
+            <if test="oTitle != null">o_title,</if>
+            <if test="oAnswer1 != null">o_answer1,</if>
+            <if test="oAnswer2 != null">o_answer2,</if>
+            <if test="oAnswer3 != null">o_answer3,</if>
+            <if test="oRight != null">o_right,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="oId != null">#{oId},</if>
+            <if test="oTitle != null">#{oTitle},</if>
+            <if test="oAnswer1 != null">#{oAnswer1},</if>
+            <if test="oAnswer2 != null">#{oAnswer2},</if>
+            <if test="oAnswer3 != null">#{oAnswer3},</if>
+            <if test="oRight != null">#{oRight},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="oId != null">AND o_id=#{oId}</if>
+            <if test="oTitle != null">AND o_title=#{oTitle}</if>
+            <if test="oAnswer1 != null">AND o_answer1=#{oAnswer1}</if>
+            <if test="oAnswer2 != null">AND o_answer2=#{oAnswer2}</if>
+            <if test="oAnswer3 != null">AND o_answer3=#{oAnswer3}</if>
+            <if test="oRight != null">AND o_right=#{oRight}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="oId != null">o_id=#{oId},</if>
+                <if test="oTitle != null">o_title=#{oTitle},</if>
+                <if test="oAnswer1 != null">o_answer1=#{oAnswer1},</if>
+                <if test="oAnswer2 != null">o_answer2=#{oAnswer2},</if>
+                <if test="oAnswer3 != null">o_answer3=#{oAnswer3},</if>
+                <if test="oRight != null">o_right=#{oRight},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="onebankEntityMap">
+        SELECT <include refid="fields"/> FROM onebank WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByOId" parameterType="Object" resultMap="onebankEntityMap">
+        SELECT <include refid="fields"/> FROM onebank WHERE o_id=#{oId}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO onebank(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE onebank <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

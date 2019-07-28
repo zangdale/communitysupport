@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.KeepageMapper">
+    <resultMap id="keepageEntityMap" type="com.didi.domain.KeepageEntity">
+            <result column="k_id" property="kId"/>
+            <result column="k_userid" property="kUserid"/>
+            <result column="k_number" property="kNumber"/>
+            <result column="k_date" property="kDate"/>
+        </resultMap>
+
+    <sql id="fields">
+        k_id,k_userid,k_number,k_date
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="kId != null">k_id,</if>
+            <if test="kUserid != null">k_userid,</if>
+            <if test="kNumber != null">k_number,</if>
+            <if test="kDate != null">k_date,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="kId != null">#{kId},</if>
+            <if test="kUserid != null">#{kUserid},</if>
+            <if test="kNumber != null">#{kNumber},</if>
+            <if test="kDate != null">#{kDate},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="kId != null">AND k_id=#{kId}</if>
+            <if test="kUserid != null">AND k_userid=#{kUserid}</if>
+            <if test="kNumber != null">AND k_number=#{kNumber}</if>
+            <if test="kDate != null">AND k_date=#{kDate}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="kId != null">k_id=#{kId},</if>
+                <if test="kUserid != null">k_userid=#{kUserid},</if>
+                <if test="kNumber != null">k_number=#{kNumber},</if>
+                <if test="kDate != null">k_date=#{kDate},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="keepageEntityMap">
+        SELECT <include refid="fields"/> FROM keepage WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByKId" parameterType="Object" resultMap="keepageEntityMap">
+        SELECT <include refid="fields"/> FROM keepage WHERE k_id=#{kId}
+    </select>
+        
+    <select id="getByKUserid" parameterType="Object" resultMap="keepageEntityMap">
+        SELECT <include refid="fields"/> FROM keepage WHERE k_userid=#{kUserid}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO keepage(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE keepage <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

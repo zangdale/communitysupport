@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.UserMapper">
+    <resultMap id="userEntityMap" type="com.didi.domain.UserEntity">
+            <result column="u_id" property="uId"/>
+            <result column="u_account" property="uAccount"/>
+            <result column="u_passwd" property="uPasswd"/>
+            <result column="u_name" property="uName"/>
+            <result column="u_age" property="uAge"/>
+            <result column="u_tel" property="uTel"/>
+            <result column="u_oldtype" property="uOldtype"/>
+            <result column="u_type" property="uType"/>
+        </resultMap>
+
+    <sql id="fields">
+        u_id,u_account,u_passwd,u_name,u_age,u_tel,u_oldtype,u_type
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="uId != null">u_id,</if>
+            <if test="uAccount != null">u_account,</if>
+            <if test="uPasswd != null">u_passwd,</if>
+            <if test="uName != null">u_name,</if>
+            <if test="uAge != null">u_age,</if>
+            <if test="uTel != null">u_tel,</if>
+            <if test="uOldtype != null">u_oldtype,</if>
+            <if test="uType != null">u_type,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="uId != null">#{uId},</if>
+            <if test="uAccount != null">#{uAccount},</if>
+            <if test="uPasswd != null">#{uPasswd},</if>
+            <if test="uName != null">#{uName},</if>
+            <if test="uAge != null">#{uAge},</if>
+            <if test="uTel != null">#{uTel},</if>
+            <if test="uOldtype != null">#{uOldtype},</if>
+            <if test="uType != null">#{uType},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="uId != null">AND u_id=#{uId}</if>
+            <if test="uAccount != null">AND u_account=#{uAccount}</if>
+            <if test="uPasswd != null">AND u_passwd=#{uPasswd}</if>
+            <if test="uName != null">AND u_name=#{uName}</if>
+            <if test="uAge != null">AND u_age=#{uAge}</if>
+            <if test="uTel != null">AND u_tel=#{uTel}</if>
+            <if test="uOldtype != null">AND u_oldtype=#{uOldtype}</if>
+            <if test="uType != null">AND u_type=#{uType}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="uId != null">u_id=#{uId},</if>
+                <if test="uAccount != null">u_account=#{uAccount},</if>
+                <if test="uPasswd != null">u_passwd=#{uPasswd},</if>
+                <if test="uName != null">u_name=#{uName},</if>
+                <if test="uAge != null">u_age=#{uAge},</if>
+                <if test="uTel != null">u_tel=#{uTel},</if>
+                <if test="uOldtype != null">u_oldtype=#{uOldtype},</if>
+                <if test="uType != null">u_type=#{uType},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="userEntityMap">
+        SELECT <include refid="fields"/> FROM user WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByUId" parameterType="Object" resultMap="userEntityMap">
+        SELECT <include refid="fields"/> FROM user WHERE u_id=#{uId}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO user(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE user <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>
