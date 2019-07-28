@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.AnswerMapper">
+    <resultMap id="answerEntityMap" type="com.didi.domain.AnswerEntity">
+            <result column="a_id" property="aId"/>
+            <result column="a_text" property="aText"/>
+            <result column="a_questionid" property="aQuestionid"/>
+            <result column="a_userid" property="aUserid"/>
+            <result column="a_date" property="aDate"/>
+        </resultMap>
+
+    <sql id="fields">
+        a_id,a_text,a_questionid,a_userid,a_date
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="aId != null">a_id,</if>
+            <if test="aText != null">a_text,</if>
+            <if test="aQuestionid != null">a_questionid,</if>
+            <if test="aUserid != null">a_userid,</if>
+            <if test="aDate != null">a_date,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="aId != null">#{aId},</if>
+            <if test="aText != null">#{aText},</if>
+            <if test="aQuestionid != null">#{aQuestionid},</if>
+            <if test="aUserid != null">#{aUserid},</if>
+            <if test="aDate != null">#{aDate},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="aId != null">AND a_id=#{aId}</if>
+            <if test="aText != null">AND a_text=#{aText}</if>
+            <if test="aQuestionid != null">AND a_questionid=#{aQuestionid}</if>
+            <if test="aUserid != null">AND a_userid=#{aUserid}</if>
+            <if test="aDate != null">AND a_date=#{aDate}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="aId != null">a_id=#{aId},</if>
+                <if test="aText != null">a_text=#{aText},</if>
+                <if test="aQuestionid != null">a_questionid=#{aQuestionid},</if>
+                <if test="aUserid != null">a_userid=#{aUserid},</if>
+                <if test="aDate != null">a_date=#{aDate},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByAId" parameterType="Object" resultMap="answerEntityMap">
+        SELECT <include refid="fields"/> FROM answer WHERE a_id=#{aId}
+    </select>
+        
+    <select id="getByAQuestionid" parameterType="Object" resultMap="answerEntityMap">
+        SELECT <include refid="fields"/> FROM answer WHERE a_questionid=#{aQuestionid}
+    </select>
+        
+    <select id="getByAUserid" parameterType="Object" resultMap="answerEntityMap">
+        SELECT <include refid="fields"/> FROM answer WHERE a_userid=#{aUserid}
+    </select>
+        
+    <select id="getByCondition" parameterType="Object" resultMap="answerEntityMap">
+        SELECT <include refid="fields"/> FROM answer WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO answer(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE answer <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

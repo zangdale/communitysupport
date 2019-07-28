@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.BloodMapper">
+    <resultMap id="bloodEntityMap" type="com.didi.domain.BloodEntity">
+            <result column="b_id" property="bId"/>
+            <result column="b_userid" property="bUserid"/>
+            <result column="b_number" property="bNumber"/>
+            <result column="b_date" property="bDate"/>
+        </resultMap>
+
+    <sql id="fields">
+        b_id,b_userid,b_number,b_date
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="bId != null">b_id,</if>
+            <if test="bUserid != null">b_userid,</if>
+            <if test="bNumber != null">b_number,</if>
+            <if test="bDate != null">b_date,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="bId != null">#{bId},</if>
+            <if test="bUserid != null">#{bUserid},</if>
+            <if test="bNumber != null">#{bNumber},</if>
+            <if test="bDate != null">#{bDate},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="bId != null">AND b_id=#{bId}</if>
+            <if test="bUserid != null">AND b_userid=#{bUserid}</if>
+            <if test="bNumber != null">AND b_number=#{bNumber}</if>
+            <if test="bDate != null">AND b_date=#{bDate}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="bId != null">b_id=#{bId},</if>
+                <if test="bUserid != null">b_userid=#{bUserid},</if>
+                <if test="bNumber != null">b_number=#{bNumber},</if>
+                <if test="bDate != null">b_date=#{bDate},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByBId" parameterType="Object" resultMap="bloodEntityMap">
+        SELECT <include refid="fields"/> FROM blood WHERE b_id=#{bId}
+    </select>
+        
+    <select id="getByBUserid" parameterType="Object" resultMap="bloodEntityMap">
+        SELECT <include refid="fields"/> FROM blood WHERE b_userid=#{bUserid}
+    </select>
+        
+    <select id="getByCondition" parameterType="Object" resultMap="bloodEntityMap">
+        SELECT <include refid="fields"/> FROM blood WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO blood(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE blood <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

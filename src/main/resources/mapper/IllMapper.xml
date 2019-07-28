@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.IllMapper">
+    <resultMap id="illEntityMap" type="com.didi.domain.IllEntity">
+            <result column="i_id" property="iId"/>
+            <result column="i_userid" property="iUserid"/>
+            <result column="i_title" property="iTitle"/>
+            <result column="i_date" property="iDate"/>
+        </resultMap>
+
+    <sql id="fields">
+        i_id,i_userid,i_title,i_date
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="iId != null">i_id,</if>
+            <if test="iUserid != null">i_userid,</if>
+            <if test="iTitle != null">i_title,</if>
+            <if test="iDate != null">i_date,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="iId != null">#{iId},</if>
+            <if test="iUserid != null">#{iUserid},</if>
+            <if test="iTitle != null">#{iTitle},</if>
+            <if test="iDate != null">#{iDate},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="iId != null">AND i_id=#{iId}</if>
+            <if test="iUserid != null">AND i_userid=#{iUserid}</if>
+            <if test="iTitle != null">AND i_title=#{iTitle}</if>
+            <if test="iDate != null">AND i_date=#{iDate}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="iId != null">i_id=#{iId},</if>
+                <if test="iUserid != null">i_userid=#{iUserid},</if>
+                <if test="iTitle != null">i_title=#{iTitle},</if>
+                <if test="iDate != null">i_date=#{iDate},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="illEntityMap">
+        SELECT <include refid="fields"/> FROM ill WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByIId" parameterType="Object" resultMap="illEntityMap">
+        SELECT <include refid="fields"/> FROM ill WHERE i_id=#{iId}
+    </select>
+        
+    <select id="getByIUserid" parameterType="Object" resultMap="illEntityMap">
+        SELECT <include refid="fields"/> FROM ill WHERE i_userid=#{iUserid}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO ill(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE ill <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>

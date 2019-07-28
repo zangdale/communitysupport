@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didi.dao.JumpMapper">
+    <resultMap id="jumpEntityMap" type="com.didi.domain.JumpEntity">
+            <result column="j_id" property="jId"/>
+            <result column="j_userid" property="jUserid"/>
+            <result column="j_number" property="jNumber"/>
+            <result column="j_date" property="jDate"/>
+        </resultMap>
+
+    <sql id="fields">
+        j_id,j_userid,j_number,j_date
+    </sql>
+
+    <sql id="insertFields">
+        <trim suffixOverrides=",">
+            <if test="jId != null">j_id,</if>
+            <if test="jUserid != null">j_userid,</if>
+            <if test="jNumber != null">j_number,</if>
+            <if test="jDate != null">j_date,</if>
+        
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="jId != null">#{jId},</if>
+            <if test="jUserid != null">#{jUserid},</if>
+            <if test="jNumber != null">#{jNumber},</if>
+            <if test="jDate != null">#{jDate},</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="conditionFields">
+        <trim prefixOverrides="AND">
+            <if test="jId != null">AND j_id=#{jId}</if>
+            <if test="jUserid != null">AND j_userid=#{jUserid}</if>
+            <if test="jNumber != null">AND j_number=#{jNumber}</if>
+            <if test="jDate != null">AND j_date=#{jDate}</if>
+        
+        </trim>
+    </sql>
+
+    <sql id="updateFields">
+        <set>
+            <trim suffixOverrides=",">
+                <if test="jId != null">j_id=#{jId},</if>
+                <if test="jUserid != null">j_userid=#{jUserid},</if>
+                <if test="jNumber != null">j_number=#{jNumber},</if>
+                <if test="jDate != null">j_date=#{jDate},</if>
+            
+            </trim>
+        </set>
+    </sql>
+
+
+    
+    <select id="getByCondition" parameterType="Object" resultMap="jumpEntityMap">
+        SELECT <include refid="fields"/> FROM jump WHERE <include refid="conditionFields"/>
+    </select>
+        
+    <select id="getByJId" parameterType="Object" resultMap="jumpEntityMap">
+        SELECT <include refid="fields"/> FROM jump WHERE j_id=#{jId}
+    </select>
+        
+    <select id="getByJUserid" parameterType="Object" resultMap="jumpEntityMap">
+        SELECT <include refid="fields"/> FROM jump WHERE j_userid=#{jUserid}
+    </select>
+        
+    <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO jump(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
+    </insert>
+        
+    <update id="updateById" parameterType="Object">
+        UPDATE jump <include refid="updateFields"/> WHERE id=#{id}        
+    </update>
+    
+</mapper>
