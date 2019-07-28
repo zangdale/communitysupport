@@ -29,7 +29,23 @@ dialog.addEventListener('cancel.mdui.dialog', function () {
     console.log('cancel');
 });
 
+//登录时向后台传递信息
 dialog.addEventListener('confirm.mdui.dialog', function () {
+    var a = $("#input_account");
+    var p = $("#input_passwd");
+    $.ajax({
+        type:"post",
+        url: "/login",
+        data: {
+            uaccount:a,
+            upasswd:p
+        },
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+            alert(data);
+        }
+    })
     console.log('confirm');
 });
 
