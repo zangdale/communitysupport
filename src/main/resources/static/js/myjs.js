@@ -52,14 +52,12 @@ dialog.addEventListener('cancel.mdui.dialog', function () {
 
 //登录时向后台传递信息
 dialog.addEventListener('confirm.mdui.dialog', function () {
-    var a = $("#input_account");
-    var p = $("#input_passwd");
     $.ajax({
         type:"post",
         url: "/login",
         data: {
-            uaccount:a,
-            upasswd:p
+            uaccount:$("#input_account").val(),
+            upasswd:$("#input_passwd").val(),
         },
         dataType:"json",
         success:function (data) {
@@ -79,6 +77,14 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
                     timeout: 3000
                 });
             }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
         }
     })
     console.log('confirm');
