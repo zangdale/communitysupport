@@ -78,6 +78,9 @@
     <select id="getByCondition" parameterType="Object" resultMap="userEntityMap">
         SELECT <include refid="fields"/> FROM user WHERE <include refid="conditionFields"/>
     </select>
+    <select id="getUsers"  resultMap="userEntityMap">
+        SELECT * FROM user
+    </select>
         
     <select id="getByUId" parameterType="Object" resultMap="userEntityMap">
         SELECT <include refid="fields"/> FROM user WHERE u_id=#{uId}
