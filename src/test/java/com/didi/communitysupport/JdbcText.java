@@ -18,7 +18,7 @@ public class JdbcText {
     public void test(){
         UserEntity user=new UserEntity();
         user.setUId(1);
-       int t= umap.getByUId(1);
-        System.out.println(t+"------------------->>>>>>>>>>>>>>>>>>>>>>>>>>");
+//       int t= umap.getByUId(1);
+//        System.out.println(t+"------------------->>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 }
