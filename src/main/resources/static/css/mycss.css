@@ -21,3 +21,11 @@
     padding-top: 16px;
     padding-bottom: 8px;
 }
+
+.container-mypagebottom{
+    width: auto;
+    height: 140px;
+    background-color: #313131;
+    /*box-shadow: 5px 0px 0px #000000;*/
+    z-index: -999;
+}

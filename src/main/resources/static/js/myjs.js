@@ -15,7 +15,7 @@ window.onload=function(){
             console.log(data.ok);
             alert(data);
             if (data.ok == 1){
-                document.getElementById('show_account').innerText=data.uentity.uname;
+                document.getElementById('show_account').innerText=data.user.uname;
             } else {
                 document.getElementById('show_account').innerText="请登录";
             }
