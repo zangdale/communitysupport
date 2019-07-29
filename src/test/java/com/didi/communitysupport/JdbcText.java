@@ -28,4 +28,6 @@ public class JdbcText {
 
         System.out.println( finddoctorService.getQuestionList()+"--------------------->");
     }
+
+
 }

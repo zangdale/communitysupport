@@ -1,17 +1,21 @@
 package com.didi.communitysupport.controller;
 
 import com.didi.communitysupport.dao.QuestionMapper;
+import com.didi.communitysupport.domain.AnswerEntity;
 import com.didi.communitysupport.domain.QuestionEntity;
 import com.didi.communitysupport.service.FinddoctorService;
 import com.didi.communitysupport.serviceimpl.FinddoctorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 寻医问药的接口
@@ -28,13 +32,30 @@ public class FinddoctorController {
 
     /**
      * 获取问题列表接口
-     * @return
+     * @return list(question)问题的json列表
      */
     @GetMapping(value = "/getquestionlist")
     @ResponseBody
-    public List<QuestionEntity> getquestionlist(){
+    public Map getQuestionList(){
+        Map json = new HashMap();
         List<QuestionEntity> questionlist=finddoctorService.getQuestionList();
-        return questionlist;
+        json.put("questions",questionlist);
+        return json;
+    }
+
+    /**
+     * 获取指定问题的详细界面
+     * @return question和list（answer）json
+     */
+    @GetMapping(value = "/getquestion")
+    @ResponseBody
+    public Map getQuestion(@RequestParam("qid") int qid){
+        Map json = new HashMap();
+        QuestionEntity q = finddoctorService.getQuestion(qid);
+        json.put("question",q);
+        List<AnswerEntity> answerEntityList=finddoctorService.getAnswersByQuestion(qid);
+        json.put("answers",answerEntityList);
+        return json;
     }
 
 
