@@ -137,5 +137,32 @@ public class UserEntity {
     public void setUType(String uType){
         this.uType = uType;
     }
-    
+
+    public UserEntity() {
+    }
+
+    public UserEntity(Integer uId, String uAccount, String uPasswd, String uName, Integer uAge, String uTel, String uOldtype, String uType) {
+        this.uId = uId;
+        this.uAccount = uAccount;
+        this.uPasswd = uPasswd;
+        this.uName = uName;
+        this.uAge = uAge;
+        this.uTel = uTel;
+        this.uOldtype = uOldtype;
+        this.uType = uType;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "uId=" + uId +
+                ", uAccount='" + uAccount + '\'' +
+                ", uPasswd='" + uPasswd + '\'' +
+                ", uName='" + uName + '\'' +
+                ", uAge=" + uAge +
+                ", uTel='" + uTel + '\'' +
+                ", uOldtype='" + uOldtype + '\'' +
+                ", uType='" + uType + '\'' +
+                '}';
+    }
 }
