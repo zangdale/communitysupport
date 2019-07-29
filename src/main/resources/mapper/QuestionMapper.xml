@@ -2,15 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.didi.communitysupport.dao.QuestionMapper">
     <resultMap id="questionEntityMap" type="com.didi.communitysupport.domain.QuestionEntity">
-            <result column="q_id" property="qId"/>
-            <result column="q_title" property="qTitle"/>
-            <result column="q_text" property="qText"/>
-            <result column="q_userid" property="qUserid"/>
-            <result column="q_date" property="qDate"/>
-        </resultMap>
+        <result column="q_id" property="qId"/>
+        <result column="q_title" property="qTitle"/>
+        <result column="q_text" property="qText"/>
+        <result column="q_userid" property="qUserid"/>
+        <result column="q_date" property="qDate"/>
+        <result column="u_name" property="uName"/>
+    </resultMap>
 
     <sql id="fields">
-        q_id,q_title,q_text,q_userid,q_date
+        q_id,q_title,q_text,q_userid,q_date,u_name
     </sql>
 
     <sql id="insertFields">
@@ -20,7 +21,7 @@
             <if test="qText != null">q_text,</if>
             <if test="qUserid != null">q_userid,</if>
             <if test="qDate != null">q_date,</if>
-        
+
         </trim>
     </sql>
     <sql id="insertValues">
@@ -30,7 +31,7 @@
             <if test="qText != null">#{qText},</if>
             <if test="qUserid != null">#{qUserid},</if>
             <if test="qDate != null">#{qDate},</if>
-        
+
         </trim>
     </sql>
 
@@ -41,7 +42,7 @@
             <if test="qText != null">AND q_text=#{qText}</if>
             <if test="qUserid != null">AND q_userid=#{qUserid}</if>
             <if test="qDate != null">AND q_date=#{qDate}</if>
-        
+
         </trim>
     </sql>
 
@@ -53,31 +54,42 @@
                 <if test="qText != null">q_text=#{qText},</if>
                 <if test="qUserid != null">q_userid=#{qUserid},</if>
                 <if test="qDate != null">q_date=#{qDate},</if>
-            
+
             </trim>
         </set>
     </sql>
 
+    <select id="getAllQuestion" parameterType="Object" resultMap="questionEntityMap">
+        SELECT  <include refid="fields"/>  FROM question,user where user.u_id=question.q_userid
+    </select>
 
-    
     <select id="getByCondition" parameterType="Object" resultMap="questionEntityMap">
-        SELECT <include refid="fields"/> FROM question WHERE <include refid="conditionFields"/>
+        SELECT
+        <include refid="fields"/>
+        FROM question WHERE
+        <include refid="conditionFields"/>
     </select>
-        
+
     <select id="getByQId" parameterType="Object" resultMap="questionEntityMap">
-        SELECT <include refid="fields"/> FROM question WHERE q_id=#{qId}
+        SELECT
+        <include refid="fields"/>
+        FROM question WHERE q_id=#{qId}
     </select>
-        
+
     <select id="getByQUserid" parameterType="Object" resultMap="questionEntityMap">
-        SELECT <include refid="fields"/> FROM question WHERE q_userid=#{qUserid}
+        SELECT
+        <include refid="fields"/>
+        FROM question WHERE q_userid=#{qUserid}
     </select>
-        
+
     <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO question(<include refid="insertFields"/>) VALUES(<include refid="insertValues"/>)
     </insert>
-        
+
     <update id="updateById" parameterType="Object">
-        UPDATE question <include refid="updateFields"/> WHERE id=#{id}        
+        UPDATE question
+        <include refid="updateFields"/>
+        WHERE id=#{id}
     </update>
-    
+
 </mapper>

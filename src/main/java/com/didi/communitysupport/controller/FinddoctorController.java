@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,18 +23,19 @@ import java.util.List;
 @Controller
 public class FinddoctorController {
 
-    private  FinddoctorService finddoctorService=new FinddoctorServiceImpl();
-    @Autowired
-    QuestionMapper qmap;
+    @Resource
+    FinddoctorService finddoctorService;
 
+    /**
+     * 获取问题列表接口
+     * @return
+     */
     @GetMapping(value = "/getquestionlist")
     @ResponseBody
     public List<QuestionEntity> getquestionlist(){
-       QuestionEntity questionEntity= qmap.getByQId(0);
-
-       // List<QuestionEntity> questionlist=finddoctorService.getQuestionList();
-        List<QuestionEntity> questionlist=new ArrayList<>();
-        questionlist.add(questionEntity);
+        List<QuestionEntity> questionlist=finddoctorService.getQuestionList();
         return questionlist;
     }
+
+
 }

@@ -22,6 +22,12 @@ public interface QuestionMapper {
     List<QuestionEntity> getByCondition(QuestionEntity entity);
 
     /**
+     *
+     * @return  List<QuestionEntity>
+     */
+    List<QuestionEntity> getAllQuestion();
+
+    /**
      * @param  qId  
      * @return QuestionEntity
      */
