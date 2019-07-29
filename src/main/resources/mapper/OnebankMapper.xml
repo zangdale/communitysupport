@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.dao.OnebankMapper">
-    <resultMap id="onebankEntityMap" type="com.didi.domain.OnebankEntity">
+<mapper namespace="com.didi.communitysupport.dao.OnebankMapper">
+    <resultMap id="onebankEntityMap" type="com.didi.communitysupport.domain.OnebankEntity">
             <result column="o_id" property="oId"/>
             <result column="o_title" property="oTitle"/>
             <result column="o_answer1" property="oAnswer1"/>
