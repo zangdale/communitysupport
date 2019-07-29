@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.dao.VideoMapper">
-    <resultMap id="videoEntityMap" type="com.didi.domain.VideoEntity">
+<mapper namespace="com.didi.communitysupport.dao.VideoMapper">
+    <resultMap id="videoEntityMap" type="com.didi.communitysupport.domain.VideoEntity">
             <result column="v_id" property="vId"/>
             <result column="v_name" property="vName"/>
             <result column="v_type" property="vType"/>

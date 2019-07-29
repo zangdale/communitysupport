@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.dao.KeepageMapper">
-    <resultMap id="keepageEntityMap" type="com.didi.domain.KeepageEntity">
+<mapper namespace="com.didi.communitysupport.dao.KeepageMapper">
+    <resultMap id="keepageEntityMap" type="com.didi.communitysupport.domain.KeepageEntity">
             <result column="k_id" property="kId"/>
             <result column="k_userid" property="kUserid"/>
             <result column="k_number" property="kNumber"/>

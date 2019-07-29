@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.dao.QuestionMapper">
-    <resultMap id="questionEntityMap" type="com.didi.domain.QuestionEntity">
+<mapper namespace="com.didi.communitysupport.dao.QuestionMapper">
+    <resultMap id="questionEntityMap" type="com.didi.communitysupport.domain.QuestionEntity">
             <result column="q_id" property="qId"/>
             <result column="q_title" property="qTitle"/>
             <result column="q_text" property="qText"/>

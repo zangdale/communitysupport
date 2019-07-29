@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.dao.WeightMapper">
-    <resultMap id="weightEntityMap" type="com.didi.domain.WeightEntity">
+<mapper namespace="com.didi.communitysupport.dao.WeightMapper">
+    <resultMap id="weightEntityMap" type="com.didi.communitysupport.domain.WeightEntity">
             <result column="w_id" property="wId"/>
             <result column="w_userid" property="wUserid"/>
             <result column="w_number" property="wNumber"/>

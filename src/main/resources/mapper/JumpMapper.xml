@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.dao.JumpMapper">
-    <resultMap id="jumpEntityMap" type="com.didi.domain.JumpEntity">
+<mapper namespace="com.didi.communitysupport.dao.JumpMapper">
+    <resultMap id="jumpEntityMap" type="com.didi.communitysupport.domain.JumpEntity">
             <result column="j_id" property="jId"/>
             <result column="j_userid" property="jUserid"/>
             <result column="j_number" property="jNumber"/>
