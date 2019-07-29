@@ -90,5 +90,26 @@ public class QuestionEntity {
     public void setQDate(Date qDate){
         this.qDate = qDate;
     }
-    
+
+    public QuestionEntity(Integer qId, String qTitle, String qText, Integer qUserid, Date qDate) {
+        this.qId = qId;
+        this.qTitle = qTitle;
+        this.qText = qText;
+        this.qUserid = qUserid;
+        this.qDate = qDate;
+    }
+
+    public QuestionEntity() {
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionEntity{" +
+                "qId=" + qId +
+                ", qTitle='" + qTitle + '\'' +
+                ", qText='" + qText + '\'' +
+                ", qUserid=" + qUserid +
+                ", qDate=" + qDate +
+                '}';
+    }
 }

@@ -1,6 +1,16 @@
 package com.didi.communitysupport.controller;
 
+import com.didi.communitysupport.dao.QuestionMapper;
+import com.didi.communitysupport.domain.QuestionEntity;
+import com.didi.communitysupport.service.FinddoctorService;
+import com.didi.communitysupport.serviceimpl.FinddoctorServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 寻医问药的接口
@@ -11,4 +21,19 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class FinddoctorController {
+
+    private  FinddoctorService finddoctorService=new FinddoctorServiceImpl();
+    @Autowired
+    QuestionMapper qmap;
+
+    @GetMapping(value = "/getquestionlist")
+    @ResponseBody
+    public List<QuestionEntity> getquestionlist(){
+       QuestionEntity questionEntity= qmap.getByQId(0);
+
+       // List<QuestionEntity> questionlist=finddoctorService.getQuestionList();
+        List<QuestionEntity> questionlist=new ArrayList<>();
+        questionlist.add(questionEntity);
+        return questionlist;
+    }
 }

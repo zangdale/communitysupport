@@ -2,6 +2,8 @@ package com.didi.communitysupport.dao;
 
 import com.didi.communitysupport.domain.QuestionEntity;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -10,6 +12,7 @@ import org.apache.ibatis.annotations.Param;
 * @table: question
 * @description: 
 */
+@Mapper
 public interface QuestionMapper {
 
     /**
