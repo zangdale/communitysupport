@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+        <div>
+            <div class="mdui-toolbar mdui-color-theme mdui-shadow-5">
+                <span class="mdui-typo-title ">智慧医养公共服务平台</span>
+            </div>
+            <div class="mdui-container mdui-p-t-5 container-mylist">
+                <h1 class="mdui-typo-display-2 mdui-text-color-theme">注册</h1>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <i class="mdui-icon material-icons">account_circle</i>
+                    <label class="mdui-textfield-label">账号名称</label>
+                    <input class="mdui-textfield-input" id="account"></input>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <i class="mdui-icon material-icons">vpn_key</i>
+                    <label class="mdui-textfield-label">密码</label>
+                    <input type="password" class="mdui-textfield-input" id="password"></input>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <i class="mdui-icon material-icons">perm_contact_calendar</i>
+                    <label class="mdui-textfield-label">真实姓名</label>
+                    <input class="mdui-textfield-input" id="name"></input>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <i class="mdui-icon material-icons">local_phone</i>
+                    <label class="mdui-textfield-label">电话号码</label>
+                    <input class="mdui-textfield-input" id="tel"></input>
+                </div>
+
+                <div class="container-myselector">
+                    <p class="mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600">年龄</p>
+                    <div>
+                        <select  id="select_id" class=" mdui-select" mdui-select>
+                        </select>
+                    </div>
+                </div>
+                <div class="container-myselector">
+                    <p class="mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600">养老类型</p>
+                    <form>
+                        <div class="mdui-row-xs-3">
+                            <div class="mdui-col">
+                                <label class="mdui-radio">
+                                    <input type="radio" name="group1" value="家庭" checked/>
+                                    <i class="mdui-radio-icon"></i>
+                                    家庭
+                                </label>
+                            </div>
+                            <div class="mdui-col">
+                                <label class="mdui-radio">
+                                    <input type="radio" name="group1" value="社区"/>
+                                    <i class="mdui-radio-icon"></i>
+                                    社区
+                                </label>
+                            </div>
+                            <div class="mdui-col">
+                                <label class="mdui-radio">
+                                    <input type="radio" name="group1" value="机构"/>
+                                    <i class="mdui-radio-icon"></i>
+                                    机构
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="container-myselector">
+                    <p class="mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600">用户类型</p>
+                    <form>
+                        <div class="mdui-row-xs-2">
+                            <div class="mdui-col">
+                                <label class="mdui-radio">
+                                    <input type="radio" name="group2"  value="患者" checked/>
+                                    <i class="mdui-radio-icon"></i>
+                                    患者
+                                </label>
+                            </div>
+                            <div class="mdui-col">
+                                <label class="mdui-radio">
+                                    <input type="radio" name="group2" value="医生"/>
+                                    <i class="mdui-radio-icon"></i>
+                                    医生
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="mdui-float-right mdui-m-t-5 mdui-m-b-5">
+                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" id="submit">提交</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./js/mdui.js"></script>
+    <script src="js/jquery-min.js"></script>
+    <script src="js/registered.js"></script>
+    <link rel="stylesheet" href="./css/mdui.css">
+    <link rel="stylesheet" href="./css/mycss.css">
+</html>
