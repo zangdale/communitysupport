@@ -73,7 +73,7 @@
     <select id="getByQId" parameterType="Object" resultMap="questionEntityMap">
         SELECT
         <include refid="fields"/>
-        FROM question WHERE q_id=#{qId}
+        FROM question ,user WHERE q_id=#{qId} and user.u_id=question.q_userid
     </select>
 
     <select id="getByQUserid" parameterType="Object" resultMap="questionEntityMap">
