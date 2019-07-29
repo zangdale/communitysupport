@@ -64,6 +64,7 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
             console.log(data.ok);
             alert(data);
             if (data.ok == 1){
+                console.log("ok, next is pop");
                 mdui.snackbar({
                     message: '登陆成功',
                     timeout: 2000,
@@ -72,6 +73,7 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
                     }
                 });
             } else {
+                console.log("not ok, next is pop");
                 mdui.snackbar({
                     message: '账号或密码错误',
                     timeout: 3000
