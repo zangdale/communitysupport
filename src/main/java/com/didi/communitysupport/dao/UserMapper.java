@@ -20,6 +20,7 @@ public interface UserMapper {
      * @return List<UserEntity>
      */
     List<UserEntity> getByCondition(UserEntity entity);
+    List<UserEntity> getUsers();
 
     /**
      * @param  uId  

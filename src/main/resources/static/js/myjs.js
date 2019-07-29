@@ -60,10 +60,10 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
             upasswd:$("#input_passwd").val(),
         },
         dataType:"json",
-        success:function (data) {
-            console.log(data.ok);
-            alert(data);
-            if (data.ok == 1){
+        success(res) {
+            alert(res);
+            console.log(res);
+            if (res.code === 200){
                 console.log("ok, next is pop");
                 mdui.snackbar({
                     message: '登陆成功',

@@ -1,6 +1,10 @@
 package com.didi.communitysupport.controller;
 
+import com.didi.communitysupport.service.LoginService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.annotation.Resource;
 
 /**
  * 个人档案的接口
@@ -8,4 +12,14 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ArchivesController {
+    @Resource
+    LoginService loginService;
+
+
+    @GetMapping("/log")
+    public String log(){
+        System.out.println(loginService);
+        System.out.println(loginService.isLogin("2","2"));
+        return "";
+    }
 }

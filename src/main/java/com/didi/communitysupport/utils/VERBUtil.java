@@ -32,7 +32,7 @@ public class VERBUtil {
      * @return boolean
      */
     public static void setUserSession(HttpServletRequest request, UserEntity u) {
-        request.getSession().setAttribute("user",u);
+        request.getSession().setAttribute(Constant.USER_INFO,u);
     }
 
 }

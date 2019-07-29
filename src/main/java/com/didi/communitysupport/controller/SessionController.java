@@ -1,6 +1,9 @@
 package com.didi.communitysupport.controller;
 
+import com.didi.communitysupport.domain.UserEntity;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * 个人信息验证
@@ -8,4 +11,9 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class SessionController {
+    @PostMapping("/getsession")
+    UserEntity getSession(){
+        return new UserEntity();
+    }
+
 }
