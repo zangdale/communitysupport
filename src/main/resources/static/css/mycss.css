@@ -11,3 +11,13 @@
 .card-style{
     margin-top: 0 !important;
 }
+
+.container-mylist{
+    max-width: 550px;
+}
+
+.container-myselector{
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 8px;
+}
