@@ -42,6 +42,16 @@ public class QuestionEntity {
      */
     private Integer qUserid;
 
+    private String uName;
+
+    public String getuName() {
+        return uName;
+    }
+
+    public void setuName(String uName) {
+        this.uName = uName;
+    }
+
     /**
      * 
      * max-len: 0
@@ -109,6 +119,7 @@ public class QuestionEntity {
                 ", qTitle='" + qTitle + '\'' +
                 ", qText='" + qText + '\'' +
                 ", qUserid=" + qUserid +
+                ", uName='" + uName + '\'' +
                 ", qDate=" + qDate +
                 '}';
     }
