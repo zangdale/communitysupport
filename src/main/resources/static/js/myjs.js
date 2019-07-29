@@ -11,10 +11,10 @@ window.onload=function(){
         type:"get",
         url: "/getsession",
         dataType:"json",
-        success:function (data) {
-            console.log(data.ok);
-            alert(data);
-            if (data.ok == 1){
+        success:function (res) {
+            console.log(res);
+            //alert(res);
+            if (res.code === 1){
                 document.getElementById('show_account').innerText=data.user.uname;
             } else {
                 document.getElementById('show_account').innerText="请登录";
@@ -61,7 +61,7 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
         },
         dataType:"json",
         success(res) {
-            alert(res);
+            //alert(res);
             console.log(res);
             if (res.code === 200){
                 console.log("ok, next is pop");
