@@ -7,5 +7,5 @@ import org.springframework.stereotype.Controller;
  * 获取监测信息	get	/getcheck					list（blood）list（jump）list（weught）list（keepage）的json
  */
 @Controller
-public class onecheckController {
+public class OnecheckController {
 }
