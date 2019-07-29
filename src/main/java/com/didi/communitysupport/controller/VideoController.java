@@ -7,5 +7,5 @@ import org.springframework.stereotype.Controller;
  * 获取视频	get	/getvideo					list(video)的json
  */
 @Controller
-public class videoController {
+public class VideoController {
 }

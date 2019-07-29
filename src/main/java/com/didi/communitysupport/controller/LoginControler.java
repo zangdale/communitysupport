@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 登录接口	post	/login	uaccount,upasswd				ok==0表示失败ok==1表示成功
  */
 @Controller
-public class loginControler {
+public class LoginControler {
 
     @RequestMapping(value = "/login")
     @ResponseBody

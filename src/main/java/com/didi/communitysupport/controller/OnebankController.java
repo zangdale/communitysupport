@@ -8,5 +8,5 @@ import org.springframework.stereotype.Controller;
  * 提交测试题	post	/submitonebank	json（onebank）只存id和答案就可以				grade=数字 表示分数
  */
 @Controller
-public class onebankController {
+public class OnebankController {
 }

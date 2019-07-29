@@ -7,5 +7,5 @@ import org.springframework.stereotype.Controller;
  * 获取个人档案	get	/getarchives					user=用户信息和list（ill）的json
  */
 @Controller
-public class archivesController {
+public class ArchivesController {
 }

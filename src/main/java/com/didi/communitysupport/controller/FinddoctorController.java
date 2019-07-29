@@ -10,5 +10,5 @@ import org.springframework.stereotype.Controller;
  * 添加回答	post	/addanswer	qid,atext,adate				ok==0表示失败ok==1表示成功 question和list（answer）json
  */
 @Controller
-public class finddoctorController {
+public class FinddoctorController {
 }
