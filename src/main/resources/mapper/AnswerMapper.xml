@@ -7,10 +7,11 @@
             <result column="a_questionid" property="aQuestionid"/>
             <result column="a_userid" property="aUserid"/>
             <result column="a_date" property="aDate"/>
+            <result column="u_name" property="uName"/>
         </resultMap>
 
     <sql id="fields">
-        a_id,a_text,a_questionid,a_userid,a_date
+        a_id,a_text,a_questionid,a_userid,a_date,u_name
     </sql>
 
     <sql id="insertFields">
@@ -61,19 +62,19 @@
 
     
     <select id="getByAId" parameterType="Object" resultMap="answerEntityMap">
-        SELECT <include refid="fields"/> FROM answer WHERE a_id=#{aId}
+        SELECT <include refid="fields"/> FROM answer , user WHERE a_id=#{aId} and answer.a_userid=user.u_id
     </select>
         
     <select id="getByAQuestionid" parameterType="Object" resultMap="answerEntityMap">
-        SELECT <include refid="fields"/> FROM answer WHERE a_questionid=#{aQuestionid}
+        SELECT <include refid="fields"/> FROM answer , user WHERE a_questionid=#{aQuestionid} and answer.a_userid=user.u_id
     </select>
         
     <select id="getByAUserid" parameterType="Object" resultMap="answerEntityMap">
-        SELECT <include refid="fields"/> FROM answer WHERE a_userid=#{aUserid}
+        SELECT <include refid="fields"/> FROM answer  , user WHERE a_userid=#{aUserid}  and answer.a_userid=user.u_id
     </select>
         
     <select id="getByCondition" parameterType="Object" resultMap="answerEntityMap">
-        SELECT <include refid="fields"/> FROM answer WHERE <include refid="conditionFields"/>
+        SELECT <include refid="fields"/> FROM answer, user WHERE <include refid="conditionFields"/>  and answer.a_userid=user.u_id
     </select>
         
     <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">

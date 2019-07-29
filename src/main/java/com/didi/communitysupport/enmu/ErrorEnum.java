@@ -1,7 +1,10 @@
 package com.didi.communitysupport.enmu;
 
 public enum ErrorEnum {
-    E201(201,"未登录");
+    E201(201,"未登录"),
+    E200(200,"登录"),
+    E404(404,"请求失败"),
+    E500(500,"拒绝服务");
 
     private Integer code;
     private String msg;
