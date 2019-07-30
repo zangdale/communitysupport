@@ -3,6 +3,7 @@ package com.didi.communitysupport.controller;
 import com.didi.communitysupport.VO.ResultVO;
 import com.didi.communitysupport.domain.UserEntity;
 import com.didi.communitysupport.service.CheckService;
+import com.didi.communitysupport.service.LoginService;
 import com.didi.communitysupport.utils.ResultVOUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,12 @@ import java.util.Map;
 public class CheckController {
     @Resource
     CheckService checkService;
-
+    @Resource
+    LoginService loginService;
     @GetMapping("/getcheck")
     public ResultVO check(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute("user");
+        user= loginService.isLogin(user.getUAccount(),null);
         Map json = checkService.check(user.getUId());
 
         return ResultVOUtil.success(json);
