@@ -8,6 +8,7 @@ import com.didi.communitysupport.service.LoginService;
 import com.didi.communitysupport.utils.ResultVOUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -19,14 +20,14 @@ import java.util.Map;
  * 个人档案的接口
  * 获取个人档案	get	/getarchives					user=用户信息和list（ill）的json
  */
-@Controller
+@RestController
 public class ArchivesController {
     @Resource
     GetArchivesService getArchivesService;
 
 
     @GetMapping("/getarchives")
-    public ResultVO getArchives(HttpSession session){
+    public ResultVO archives(HttpSession session){
         UserEntity user = getArchivesService.getArchives(session);
         List<IllEntity> list = getArchivesService.illList(user.getUId());
         Map json = new HashMap();
