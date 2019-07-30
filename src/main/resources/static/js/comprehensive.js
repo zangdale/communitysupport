@@ -109,6 +109,9 @@ window.onload = function () {
                 }
 
             }
+        },
+        error:function () {
+            $('#list_questions').append("<div class=\"mdui-list-item-title mdui-text-center mdui-btn-bold mdui-m-t-2 mdui-m-b-2\">网络错误</div>");
         }
     })
 };
