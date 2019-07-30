@@ -15,13 +15,31 @@ public class OneBankServiceImpl implements OneBankService {
 
     @Override
     public List<OnebankEntity> getOneBankList() {
-        List<OnebankEntity> onebankEntityList=omap.getAll();
+        List<OnebankEntity> onebankEntityList = omap.getAll();
         return onebankEntityList;
     }
 
     @Override
     public int SubmitOneBank(String onebanks) {
+        //System.out.println(onebanks);
+        onebanks = onebanks.replace("[", "");
+        onebanks = onebanks.replace("{", "");
+        // System.out.println(onebanks);
+        String[] onebank = onebanks.split("},");
+        int count = 0;
+        int oid;
+        int oright;
+        OnebankEntity onebankEntity = null;
+        for (String str : onebank) {
+            str = str.replace("}", "");
+            str = str.replace("\"oid\":", "");
+            str = str.replace("\"oright\":", "");
+            System.out.println(str);
+            String[] s = str.split(",");
+            oid=Integer.parseInt(s[0]);
+            oright=Integer.parseInt(s[1]);
+        }
 
-        return 0;
+        return count;
     }
 }
