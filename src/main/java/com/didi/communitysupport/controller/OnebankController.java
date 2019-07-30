@@ -61,7 +61,7 @@ public class OnebankController {
         Map json = new HashMap();
         UserEntity user = VERBUtil.getUserSession(request);
         System.out.println(user);
-        if (user != null) {
+        if (user == null) {
             return ResultVOUtil.error(ErrorEnum.E201);
         }
         int grade=oneBankService.SubmitOneBank(onebanks);
