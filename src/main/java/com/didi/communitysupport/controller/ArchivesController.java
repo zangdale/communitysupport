@@ -32,7 +32,7 @@ public class ArchivesController {
         List<IllEntity> list = getArchivesService.illList(user.getUId());
         Map json = new HashMap();
         json.put("user",user);
-        json.put("list",list);
+        json.put("ills",list);
         System.out.println(json);
         return ResultVOUtil.success(json);
 
