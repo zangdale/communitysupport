@@ -1,10 +1,11 @@
+//打开登录对话框
 var inst = new mdui.Dialog('#dialog_login');
 
-// method
 document.getElementById('button_login').addEventListener('click', function () {
     inst.open();
 });
 
+//获取标题栏展示的用户名
 window.onload=function(){
     console.log("do get user name");
     $.ajax({
@@ -27,7 +28,7 @@ window.onload=function(){
 
 }
 
-// event
+// 对话框event示例
 var dialog = document.getElementById('dialog_login');
 
 dialog.addEventListener('open.mdui.dialog', function () {
@@ -91,5 +92,11 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
     })
     console.log('confirm');
 });
+
+//打开卡片一
+$('#card_com').click(function () {
+    window.location.href="comprehensive.html";
+});
+
 
 
