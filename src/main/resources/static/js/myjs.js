@@ -99,4 +99,3 @@ $('#card_com').click(function () {
 });
 
 
-

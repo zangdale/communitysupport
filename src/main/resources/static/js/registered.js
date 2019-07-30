@@ -1,3 +1,4 @@
+//注册age项目生成
 $(document).ready(function () {
     var inst = new mdui.Select('#select_id');
     for (var i = 1; i <= 100; i++) {
@@ -7,6 +8,7 @@ $(document).ready(function () {
 
 })
 
+//提交注册信息
 $('#submit').click(function () {
     $.ajax({
         type: "post",

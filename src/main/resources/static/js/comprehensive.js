@@ -19,7 +19,7 @@ window.onload = function () {
         }
     })
 
-}
+};
 
 //打开发帖对话框
 var inst = new mdui.Dialog('#dialog_post');
@@ -27,6 +27,51 @@ var inst = new mdui.Dialog('#dialog_post');
 document.getElementById('button_post').addEventListener('click', function () {
     inst.open();
 });
+
+//点击对话框发布按钮
+var dialog = document.getElementById('dialog_post');
+
+dialog.addEventListener('confirm.mdui.dialog', function () {
+    $.ajax({
+        type:"post",
+        url: "/addquestion",
+        data: {
+            qtitle:$("#input_title").val(),
+            qtext:$("#input_test").val()
+        },
+        dataType:"json",
+        success(res) {
+            //alert(res);
+            console.log(res);
+            if (res.code === 200){
+                console.log("ok, next is pop");
+                mdui.snackbar({
+                    message: '发布成功',
+                    timeout: 2000,
+                    onClosed: function () {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                console.log("not ok, next is pop");
+                mdui.snackbar({
+                    message: '发布失败',
+                    timeout: 3000
+                });
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
+        }
+    })
+    console.log('confirm');
+});
+
 
 //获得问题列表
 window.onload = function () {
@@ -40,20 +85,36 @@ window.onload = function () {
             //alert(res);
             if (res.code === 200) {
                 var list = res.data.questions;
-                for (var i = 1; i <= list.length; i++) {
-                    $('#select_id').append("<option value = '" + i + "'>" + i + "</option>");
+                for (var i = 0; i < list.length; i++) {
+                    $('#list_questions').append(
+                        "<li class=\"mdui-list-item mdui-ripple\">\n" +
+                        "                                <div class=\"mdui-list-item-content\">\n" +
+                        "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
+                        "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
+                        "                                        <span class=\"mdui-text-color-theme-text\">"+list[i].qtext+"" +
+                        "                                        </span>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>\n" +
+                        "                                <div class=\"mdui-list-item-content mdui-text-right\">\n" +
+                        "                                    <div class=\"mdui-list-item-text\">"+list[i].uName+"</div>\n" +
+                        "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
+                        "                                        <span class=\"mdui-text-color-theme-text\">"+renderTime(list[i].qdate)+"</span>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>\n" +
+                        "                            </li>"
+                    );
+                    if (i!=list.length-1) {
+                        $('#list_questions').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
+                    }
                 }
 
-            } else {
-                document.getElementById('show_account').innerText = "请登录";
             }
-        },
-        error: function () {
-            document.getElementById('show_account').innerText = "请登录";
         }
     })
-}
+};
 
+/*
+//debug
 $(document).ready(function () {
     var list = [
         {
@@ -86,10 +147,19 @@ $(document).ready(function () {
             "                                <div class=\"mdui-list-item-content mdui-text-right\">\n" +
             "                                    <div class=\"mdui-list-item-text\">"+list[i].uName+"</div>\n" +
             "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
-            "                                        <span class=\"mdui-text-color-theme-text\">"+list[i].qdate.getHours()+"</span>\n" +
+            "                                        <span class=\"mdui-text-color-theme-text\">"+renderTime(list[i].qdate)+"</span>\n" +
             "                                    </div>\n" +
             "                                </div>\n" +
             "                            </li>"
         );
+        if (i!=list.length-1) {
+            $('#list_questions').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
+        }
     }
-})
+});
+*/
+
+function renderTime(date) {
+    var dateee = new Date(date).toJSON();
+    return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+};
