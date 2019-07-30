@@ -17,12 +17,9 @@ public class VERBUtil {
      * @param u
      * @return 一个boolean
      */
-    public static boolean getUserSession(HttpServletRequest request, UserEntity u) {
+    public static UserEntity getUserSession(HttpServletRequest request) {
         UserEntity user = (UserEntity) request.getSession().getAttribute("user");
-        if (u.getUId() == user.getUId()) {
-            return true;
-        }
-        return false;
+        return user;
     }
 
     /**

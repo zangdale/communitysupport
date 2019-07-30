@@ -28,4 +28,18 @@ public interface FinddoctorService {
      * @return List<AnswerEntity>
      */
     List<AnswerEntity> getAnswersByQuestion(int qid);
+
+    /**
+     * 添加一个问题
+     * @param questionEntity
+     * @return boolean
+     */
+    boolean addQuestion(QuestionEntity questionEntity);
+
+    /**
+     * 添加制定问题的回答信息
+     * @param answerEntity
+     * @return bool
+     */
+    boolean addAnswerToQ(AnswerEntity answerEntity);
 }

@@ -42,6 +42,16 @@ public class AnswerEntity {
      */
     private Integer aUserid;
 
+    private String uName;
+
+    public String getuName() {
+        return uName;
+    }
+
+    public void setuName(String uName) {
+        this.uName = uName;
+    }
+
     /**
      * 
      * max-len: 0
@@ -90,5 +100,16 @@ public class AnswerEntity {
     public void setADate(Date aDate){
         this.aDate = aDate;
     }
-    
+
+    @Override
+    public String toString() {
+        return "AnswerEntity{" +
+                "aId=" + aId +
+                ", aText='" + aText + '\'' +
+                ", aQuestionid=" + aQuestionid +
+                ", aUserid=" + aUserid +
+                ", uName='" + uName + '\'' +
+                ", aDate=" + aDate +
+                '}';
+    }
 }
