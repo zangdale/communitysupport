@@ -49,4 +49,14 @@ public class FinddoctorServiceImpl implements FinddoctorService {
             return false;
         }
     }
+
+    @Override
+    public boolean addAnswerToQ(AnswerEntity answerEntity) {
+        int i=amap.insert(answerEntity);
+        if(i>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 public class VERBUtil {
     /**
      * 查看用户是否已经登陆,在session中已经有对象了,传入的参数有一个
-     * HttpServletRequest和UserEntity
+     * HttpServletRequest和
      *
      * @param request
-     * @param u
      * @return 一个boolean
      */
     public static UserEntity getUserSession(HttpServletRequest request) {

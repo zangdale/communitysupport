@@ -5,6 +5,7 @@ import com.didi.communitysupport.dao.UserMapper;
 import com.didi.communitysupport.domain.UserEntity;
 import com.didi.communitysupport.service.LoginService;
 import com.didi.communitysupport.serviceimpl.LoginServiceImpl;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -23,8 +24,8 @@ public class CommunitysupportApplicationTests {
     LoginService loginService;
     @Test
     public void contextLoads() {
-        System.out.println(loginService.isLogin("1","1"));
-
+        UserEntity user = new UserEntity();
+        user.setUId(111);
 
     }
 

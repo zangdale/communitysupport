@@ -3,6 +3,8 @@ package com.didi.communitysupport.dao;
 import com.didi.communitysupport.domain.QuestionEntity;
 import com.didi.communitysupport.domain.VideoEntity;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -11,6 +13,7 @@ import org.apache.ibatis.annotations.Param;
 * @table: video
 * @description: 
 */
+@Mapper
 public interface VideoMapper {
 
     /**
