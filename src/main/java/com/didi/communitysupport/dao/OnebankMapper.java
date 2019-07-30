@@ -2,6 +2,8 @@ package com.didi.communitysupport.dao;
 
 import com.didi.communitysupport.domain.OnebankEntity;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -10,6 +12,7 @@ import org.apache.ibatis.annotations.Param;
 * @table: onebank
 * @description: 
 */
+@Mapper
 public interface OnebankMapper {
 
     /**
