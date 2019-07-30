@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 })
 
-mdui.JQ('#submit').click(function () {
+$('#submit').click(function () {
     $.ajax({
         type: "post",
         url: "/register",
