@@ -85,7 +85,7 @@ window.onload = function () {
             //alert(res);
             if (res.code === 200) {
                 var list = res.data.questions;
-                for (var i = 0; i < list.length; i++) {
+                for (var i = list.length-1; i >= 0 ; i--) {
                     $('#list_questions').append(
                         "<li class=\"mdui-list-item mdui-ripple\">\n" +
                         "                                <div class=\"mdui-list-item-content\">\n" +
@@ -103,7 +103,7 @@ window.onload = function () {
                         "                                </div>\n" +
                         "                            </li>"
                     );
-                    if (i!=list.length-1) {
+                    if (i!=0) {
                         $('#list_questions').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
                     }
                 }
