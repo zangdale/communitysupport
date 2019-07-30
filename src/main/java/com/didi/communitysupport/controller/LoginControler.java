@@ -54,8 +54,15 @@ public class LoginControler {
                                 @RequestParam(value = "utel",required=true,defaultValue="") String utel,
                                 @RequestParam(value = "oldtype",required=true,defaultValue="") String oldtype,
                                 @RequestParam(value = "utype",required=true,defaultValue="") String utype){
-        if (IsEmply.StringIsEmply(uaccount)||IsEmply.StringIsEmply(upasswd)) {
-            return ResultVOUtil.error(ErrorEnum.E500);
+        if (IsEmply.StringIsEmply(uaccount)||
+                IsEmply.StringIsEmply(upasswd)||
+                IsEmply.StringIsEmply(uname)||
+                IsEmply.StringIsEmply(utel)||
+                IsEmply.StringIsEmply(oldtype)||
+                IsEmply.StringIsEmply(utype)||
+                uage==-1
+        ) {
+            return ResultVOUtil.error(ErrorEnum.E202);
         }
         UserEntity user = new UserEntity();
         user.setUTel(utel);
