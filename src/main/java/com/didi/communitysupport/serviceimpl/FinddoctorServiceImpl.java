@@ -39,4 +39,14 @@ public class FinddoctorServiceImpl implements FinddoctorService {
         List<AnswerEntity> answerEntityList = amap.getByAQuestionid(qid);
         return answerEntityList;
     }
+
+    @Override
+    public boolean addQuestion(QuestionEntity questionEntity) {
+        int i=qmap.insert(questionEntity);
+        if(i>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
