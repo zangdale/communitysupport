@@ -7,6 +7,7 @@ import com.didi.communitysupport.domain.QuestionEntity;
 import com.didi.communitysupport.domain.UserEntity;
 import com.didi.communitysupport.enmu.ErrorEnum;
 import com.didi.communitysupport.service.OneBankService;
+import com.didi.communitysupport.utils.IsEmply;
 import com.didi.communitysupport.utils.ResultVOUtil;
 import com.didi.communitysupport.utils.VERBUtil;
 import org.springframework.stereotype.Controller;
@@ -57,7 +58,10 @@ public class OnebankController {
      * @return grade=数字 表示分数
      */
     @PostMapping("/submitonebank")
-    public ResultVO submitOneBank(@RequestParam("onebanks") String onebanks ,HttpServletRequest request) {
+    public ResultVO submitOneBank(@RequestParam(value = "onebanks",required=true,defaultValue="") String onebanks ,HttpServletRequest request) {
+        if (IsEmply.StringIsEmply(onebanks)) {
+            return ResultVOUtil.error(ErrorEnum.E500);
+        }
         Map json = new HashMap();
         UserEntity user = VERBUtil.getUserSession(request);
         System.out.println(user);
