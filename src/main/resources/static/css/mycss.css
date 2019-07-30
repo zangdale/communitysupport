@@ -5,7 +5,8 @@
     background-attachment: local;
     background-size: cover;
     width: auto;
-    height: 800px;
+    height: auto;
+    min-height: 800px;
 }
 
 .card-style{
@@ -32,6 +33,7 @@
 
 .container-mypaddingforhide{
     padding-top: 160px;
+    padding-bottom: 160px;
 }
 
 .container-mylistcard{

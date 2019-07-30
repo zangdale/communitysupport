@@ -47,7 +47,7 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
                 console.log("ok, next is pop");
                 mdui.snackbar({
                     message: '发布成功',
-                    timeout: 2000,
+                    timeout: 1500,
                     onClosed: function () {
                         window.location.reload();
                     }
@@ -56,7 +56,7 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
                 console.log("not ok, next is pop");
                 mdui.snackbar({
                     message: '发布失败',
-                    timeout: 3000
+                    timeout: 1500
                 });
             }
         },
@@ -134,7 +134,7 @@ $(document).ready(function () {
             "qdate":"2019-07-29T17:17:23.000+0000"
         }
     ];
-    for (var i = 0; i < list.length; i++) {
+    for (var i = list.length-1; i >= 0 ; i--) {
         $('#list_questions').append(
             "<li class=\"mdui-list-item mdui-ripple\">\n" +
             "                                <div class=\"mdui-list-item-content\">\n" +
@@ -152,7 +152,7 @@ $(document).ready(function () {
             "                                </div>\n" +
             "                            </li>"
         );
-        if (i!=list.length-1) {
+        if (i!=0) {
             $('#list_questions').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
         }
     }
