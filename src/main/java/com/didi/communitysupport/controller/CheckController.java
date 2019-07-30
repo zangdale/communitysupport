@@ -13,6 +13,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
+/**
+ * 养老预警
+ * 获取监测信息	get	/getcheck					list（blood）list（jump）list（weught）list（keepage）的json
+ */
 @RestController
 public class CheckController {
     @Resource
