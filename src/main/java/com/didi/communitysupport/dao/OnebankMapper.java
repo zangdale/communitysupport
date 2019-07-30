@@ -39,4 +39,9 @@ public interface OnebankMapper {
      */
     int updateById(OnebankEntity entity);
 
+    /**
+     * 获取所有的问题的列表
+     * @return
+     */
+    List<OnebankEntity> getAll();
 }
