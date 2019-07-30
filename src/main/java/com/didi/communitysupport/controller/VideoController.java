@@ -38,6 +38,9 @@ public class VideoController {
             return ResultVOUtil.error(ErrorEnum.E201);
         }
         json.put("video",Videolist);
+        /**
+         * vedio
+         */
         return ResultVOUtil.success(json);
     }
 
