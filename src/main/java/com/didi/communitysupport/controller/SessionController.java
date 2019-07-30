@@ -39,7 +39,6 @@ public class SessionController {
             user.setUOldtype(Constant.NULL_INFO);
             user.setUTel(Constant.NULL_INFO);
             user.setUType(Constant.NULL_INFO);
-
         }
         return ResultVOUtil.success(user);
     }

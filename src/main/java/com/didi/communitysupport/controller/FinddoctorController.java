@@ -8,6 +8,7 @@ import com.didi.communitysupport.domain.UserEntity;
 import com.didi.communitysupport.enmu.ErrorEnum;
 import com.didi.communitysupport.service.FinddoctorService;
 import com.didi.communitysupport.serviceimpl.FinddoctorServiceImpl;
+import com.didi.communitysupport.utils.IsEmply;
 import com.didi.communitysupport.utils.ResultVOUtil;
 import com.didi.communitysupport.utils.VERBUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,10 @@ public class FinddoctorController {
      * @return question和list（answer）json
      */
     @GetMapping(value = "/getquestion")
-    public ResultVO getQuestion(@RequestParam("qid") int qid) {
+    public ResultVO getQuestion(@RequestParam(value="qid",required=true,defaultValue="-1") int qid) {
+        if (qid == -1) {
+            return ResultVOUtil.error(ErrorEnum.E500);
+        }
         Map json = new HashMap();
         QuestionEntity q = finddoctorService.getQuestion(qid);
         json.put("question", q);
@@ -71,7 +75,10 @@ public class FinddoctorController {
      * @return
      */
     @PostMapping("/addquestion")
-    public ResultVO addQuestion(@RequestParam("qtitle") String qtitle, @RequestParam("qtext") String qtext, HttpServletRequest request) {
+    public ResultVO addQuestion(@RequestParam(value="qtitle",required=true,defaultValue="") String qtitle, @RequestParam(value="qtext",required=true,defaultValue="") String qtext, HttpServletRequest request) {
+        if (IsEmply.StringIsEmply(qtitle)|| IsEmply.StringIsEmply(qtext)) {
+            return ResultVOUtil.error(ErrorEnum.E500);
+        }
         Map json = new HashMap();
         UserEntity user = VERBUtil.getUserSession(request);
         System.out.println(user);
@@ -103,7 +110,10 @@ public class FinddoctorController {
      * @return  question和list（answer）json
      */
     @PostMapping("/addanswer")
-    public ResultVO addAnswer(@RequestParam("qid") int  qid, @RequestParam("atext") String atext, HttpServletRequest request) {
+    public ResultVO addAnswer(@RequestParam(value = "qid",required=true,defaultValue="-1") int  qid, @RequestParam(value = "atext",required=true,defaultValue="") String atext, HttpServletRequest request) {
+        if (qid==-1||IsEmply.StringIsEmply(atext)) {
+            return ResultVOUtil.error(ErrorEnum.E500);
+        }
         Map json = new HashMap();
         UserEntity user = VERBUtil.getUserSession(request);
         System.out.println(user);

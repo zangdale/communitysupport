@@ -24,11 +24,13 @@ import java.util.Map;
 public class ArchivesController {
     @Resource
     GetArchivesService getArchivesService;
-
+    @Resource
+    LoginService loginService;
 
     @GetMapping("/getarchives")
     public ResultVO archives(HttpSession session){
         UserEntity user = getArchivesService.getArchives(session);
+        user= loginService.isLogin(user.getUAccount(),null);
         List<IllEntity> list = getArchivesService.illList(user.getUId());
         Map json = new HashMap();
         json.put("user",user);
