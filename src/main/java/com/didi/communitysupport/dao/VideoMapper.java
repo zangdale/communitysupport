@@ -1,5 +1,6 @@
 package com.didi.communitysupport.dao;
 
+import com.didi.communitysupport.domain.QuestionEntity;
 import com.didi.communitysupport.domain.VideoEntity;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -35,5 +36,6 @@ public interface VideoMapper {
      * @return int
      */
     int updateById(VideoEntity entity);
+    List<VideoEntity> getAllVideo();
 
 }

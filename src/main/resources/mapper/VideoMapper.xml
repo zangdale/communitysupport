@@ -54,7 +54,9 @@
     </sql>
 
 
-    
+    <select id="getAllVideo" parameterType="Object" resultMap="videoEntityMap">
+        SELECT * FROM video
+    </select>
     <select id="getByCondition" parameterType="Object" resultMap="videoEntityMap">
         SELECT <include refid="fields"/> FROM video WHERE <include refid="conditionFields"/>
     </select>
