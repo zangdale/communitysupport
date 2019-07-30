@@ -63,7 +63,9 @@
         </set>
     </sql>
 
-
+    <select id="getAll" parameterType="Object" resultMap="onebankEntityMap">
+        SELECT * FROM onebank
+    </select>
     
     <select id="getByCondition" parameterType="Object" resultMap="onebankEntityMap">
         SELECT <include refid="fields"/> FROM onebank WHERE <include refid="conditionFields"/>
