@@ -4,6 +4,7 @@ import com.didi.communitysupport.VO.ResultVO;
 import com.didi.communitysupport.domain.UserEntity;
 import com.didi.communitysupport.enmu.ErrorEnum;
 import com.didi.communitysupport.service.LoginService;
+import com.didi.communitysupport.service.RegisterService;
 import com.didi.communitysupport.utils.Constant;
 import com.didi.communitysupport.utils.ResultVOUtil;
 import com.didi.communitysupport.utils.VERBUtil;
@@ -38,5 +39,26 @@ public class LoginControler {
             return ResultVOUtil.success();
         }
         return ResultVOUtil.error(ErrorEnum.E201);
+    }
+    @Resource
+    RegisterService registerService;
+    @PostMapping("/register")
+    public ResultVO getRegister(@RequestParam String uaccount,
+                                @RequestParam String upasswd,
+                                @RequestParam String uname,@RequestParam Integer uage,
+                                @RequestParam String utel,@RequestParam String oldtype,
+                                @RequestParam String utype){
+        UserEntity user = new UserEntity();
+        user.setUAccount(uaccount);
+        user.setUPasswd(upasswd);
+        user.setUAge(uage);
+        user.setUName(uname);
+        user.setUOldtype(oldtype);
+        user.setUType(utype);
+        int n = registerService.register(user);
+        if(n>0){
+            return ResultVOUtil.success("注册成功");
+        }
+        return ResultVOUtil.error(ErrorEnum.E202);
     }
 }
