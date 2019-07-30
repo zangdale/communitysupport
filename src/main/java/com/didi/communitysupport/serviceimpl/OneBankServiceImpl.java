@@ -38,6 +38,10 @@ public class OneBankServiceImpl implements OneBankService {
             String[] s = str.split(",");
             oid=Integer.parseInt(s[0]);
             oright=Integer.parseInt(s[1]);
+            onebankEntity=omap.getByOId(oid);
+            if(onebankEntity.getORight()==oright){
+                count++;
+            }
         }
 
         return count;
