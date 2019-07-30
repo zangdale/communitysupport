@@ -21,10 +21,10 @@ mdui.JQ('#submit').click(function () {
             utype: $("imput[name='group2']:checked").val()
         },
         dataType: "json",
-        success: function (data) {
-            console.log(data.ok);
-            alert(data);
-            if (data.ok == 1) {
+        success: function (res) {
+            console.log(res.code==200);
+            //alert(data);
+            if (res.code == 200) {
                 mdui.snackbar({
                     message: '注册成功！返回首页中...',
                     timeout: 3000,

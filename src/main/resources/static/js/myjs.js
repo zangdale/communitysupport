@@ -15,7 +15,7 @@ window.onload=function(){
         success:function (res) {
             console.log(res);
             //alert(res);
-            if (res.code === 1){
+            if (res.code === 200){
                 document.getElementById('show_account').innerText=data.user.uname;
             } else {
                 document.getElementById('show_account').innerText="请登录";
