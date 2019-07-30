@@ -65,24 +65,18 @@
 
                     <div class="mdui-dialog" id="dialog_post">
                         <div class="mdui-dialog-content">
-                            <div class="mdui-dialog-title">登录账号</div>
-                            <div class="mdui-textfield mdui-textfield-floating-label">
-                                <label class="mdui-textfield-label">账号</label>
-                                <input class="mdui-textfield-input" type="text" id="input_account"/>
-                                <div class="mdui-textfield-error">账号不能为空</div>
+                            <div class="mdui-dialog-title">发布问题</div>
+                            <div class="mdui-textfield ">
+                                <textarea  class="mdui-textfield-input" type="text" placeholder="标题" id="input_account"></textarea>
                             </div>
-                            <div class="mdui-textfield mdui-textfield-floating-label">
-                                <label class="mdui-textfield-label">密码</label>
-                                <input class="mdui-textfield-input" type="password" id="input_passwd"/>
-                                <div class="mdui-textfield-error">密码不能为空</div>
+                            <div class="mdui-textfield ">
+                                <textarea  class="mdui-textfield-input" type="text" rows="4" placeholder="内容" id="input_passwd"></textarea>
                             </div>
 
                             <div class="mdui-dialog-actions">
-                                <a href="registered.html"
-                                   class="mdui-btn mdui-ripple1 mdui-float-left mdui-text-color-theme">还没有账号？点击注册</a>
                                 <button class="mdui-btn mdui-text-color-black-secondary mdui-ripple" mdui-dialog-cancel>取消
                                 </button>
-                                <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>登录</button>
+                                <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>发布</button>
                             </div>
                         </div>
                     </div>
