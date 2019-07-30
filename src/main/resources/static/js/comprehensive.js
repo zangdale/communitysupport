@@ -76,15 +76,20 @@ $(document).ready(function () {
     for (var i = 0; i < list.length; i++) {
         $('#list_questions').append(
             "<li class=\"mdui-list-item mdui-ripple\">\n" +
-            "<div class=\"mdui-list-item-content\">\n" +
-            "<div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
-            "<div class=\"mdui-list-item-text mdui-list-item-one-line\"><span\n" +
-            " class=\"mdui-text-color-theme-text\">All Connors</span> - I'll be in your\n" +
-            "neighborhood\n" +
-            "...\n" +
-            "</div>\n" +
-            "</div>\n" +
-            "</li>"
+            "                                <div class=\"mdui-list-item-content\">\n" +
+            "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
+            "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
+            "                                        <span class=\"mdui-text-color-theme-text\">"+list[i].qtext+"" +
+            "                                        </span>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "                                <div class=\"mdui-list-item-content mdui-text-right\">\n" +
+            "                                    <div class=\"mdui-list-item-text\">"+list[i].uName+"</div>\n" +
+            "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
+            "                                        <span class=\"mdui-text-color-theme-text\">"+list[i].qdate.getHours()+"</span>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "                            </li>"
         );
     }
 })

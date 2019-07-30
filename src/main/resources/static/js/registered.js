@@ -18,7 +18,7 @@ $('#submit').click(function () {
             uage: $('#select_id option:selected').val(),
             utel: $('#tel').val(),
             uoldtype: $("input[name='group1']:checked").val(),
-            utype: $("imput[name='group2']:checked").val()
+            utype: $("input[name='group2']:checked").val()
         },
         dataType: "json",
         success: function (res) {
