@@ -24,7 +24,6 @@ public class FinddoctorServiceImpl implements FinddoctorService {
     @Override
     public List<QuestionEntity> getQuestionList() {
         List<QuestionEntity> questionlist = qmap.getAllQuestion();
-
         return questionlist;
     }
 

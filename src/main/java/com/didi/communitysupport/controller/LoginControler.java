@@ -52,13 +52,14 @@ public class LoginControler {
                                 @RequestParam(value = "uname",required=true,defaultValue="") String uname,
                                 @RequestParam(value = "uage",required=true,defaultValue="-1") Integer uage,
                                 @RequestParam(value = "utel",required=true,defaultValue="") String utel,
-                                @RequestParam(value = "oldtype",required=true,defaultValue="") String oldtype,
+                                @RequestParam(value = "uoldtype",required=true,defaultValue="") String uoldtype,
                                 @RequestParam(value = "utype",required=true,defaultValue="") String utype){
+        //System.out.println(uaccount+uname+upasswd+uage+utel+uoldtype+utype);
         if (IsEmply.StringIsEmply(uaccount)||
                 IsEmply.StringIsEmply(upasswd)||
                 IsEmply.StringIsEmply(uname)||
                 IsEmply.StringIsEmply(utel)||
-                IsEmply.StringIsEmply(oldtype)||
+                IsEmply.StringIsEmply(uoldtype)||
                 IsEmply.StringIsEmply(utype)||
                 uage==-1
         ) {
@@ -70,7 +71,7 @@ public class LoginControler {
         user.setUPasswd(upasswd);
         user.setUAge(uage);
         user.setUName(uname);
-        user.setUOldtype(oldtype);
+        user.setUOldtype(uoldtype);
         user.setUType(utype);
         int n = registerService.register(user);
         if(n>0){
