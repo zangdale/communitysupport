@@ -64,7 +64,7 @@
     </select>
         
     <select id="getByKUserid" parameterType="Object" resultMap="keepageEntityMap">
-        SELECT <include refid="fields"/> FROM keepage WHERE k_userid=#{kUserid}
+        SELECT <include refid="fields"/> FROM keepage WHERE k_userid=#{kUserid} ORDER BY k_date  DESC  LIMIT 7
     </select>
         
     <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">

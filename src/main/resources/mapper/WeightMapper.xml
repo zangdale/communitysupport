@@ -64,7 +64,7 @@
     </select>
         
     <select id="getByWUserid" parameterType="Object" resultMap="weightEntityMap">
-        SELECT <include refid="fields"/> FROM weight WHERE w_userid=#{wUserid}
+        SELECT <include refid="fields"/> FROM weight WHERE w_userid=#{wUserid} ORDER BY w_date  DESC  LIMIT 7
     </select>
         
     <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">

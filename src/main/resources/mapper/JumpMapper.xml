@@ -64,7 +64,7 @@
     </select>
         
     <select id="getByJUserid" parameterType="Object" resultMap="jumpEntityMap">
-        SELECT <include refid="fields"/> FROM jump WHERE j_userid=#{jUserid}
+        SELECT <include refid="fields"/> FROM jump WHERE j_userid=#{jUserid} ORDER BY j_date  DESC  LIMIT 7
     </select>
         
     <insert id="insert" parameterType="Object" keyProperty="id" useGeneratedKeys="true">

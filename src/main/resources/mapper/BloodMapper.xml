@@ -60,7 +60,7 @@
     </select>
         
     <select id="getByBUserid" parameterType="Object" resultMap="bloodEntityMap">
-        SELECT <include refid="fields"/> FROM blood WHERE b_userid=#{bUserid}
+        SELECT <include refid="fields"/> FROM blood WHERE b_userid=#{bUserid} ORDER BY b_date  DESC  LIMIT 7
     </select>
         
     <select id="getByCondition" parameterType="Object" resultMap="bloodEntityMap">
