@@ -204,15 +204,7 @@ function DrawTable(valdata) {
     //综合得分
     option.series[3].data=keepage;
     console.log(times)
-    option.xAxis.data=[
-        "1"+'\n',
-        "1+\\n"+'\n',
-        "1+\\n"+'\n',
-        "1+\\n"+'\n',
-        "1+\\n"+'\n',
-        "1+\\n"+'\n',
-        "1+\\n+'\\n'"
-    ];
+    option.xAxis[0].data=times;
     console.log(option.xAxis.data)
     //console.log(option);
 
