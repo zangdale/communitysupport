@@ -12,10 +12,24 @@ window.onload=function(){
                 document.getElementById('show_account').innerText=res.data.uname;
             } else {
                 document.getElementById('show_account').innerText="请登录";
+                mdui.snackbar({
+                    message: '没有登录',
+                    timeout: 2000,
+                    onClosed: function () {
+                        document.getElementById('show_account').innerText = "请登录";
+                    }
+                });
             }
         },
         error:function () {
             document.getElementById('show_account').innerText="请登录";
+            mdui.snackbar({
+                message: '没有登录',
+                timeout: 2000,
+                onClosed: function () {
+                    document.getElementById('show_account').innerText = "请登录";
+                }
+            });
         }
     })
 
