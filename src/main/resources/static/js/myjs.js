@@ -6,27 +6,41 @@ document.getElementById('button_login').addEventListener('click', function () {
 });
 
 //获取标题栏展示的用户名
-window.onload=function(){
+window.onload = function () {
     console.log("do get user name");
     $.ajax({
-        type:"get",
+        type: "get",
         url: "/getsession",
-        dataType:"json",
-        success:function (res) {
+        dataType: "json",
+        success: function (res) {
             console.log(res);
             //alert(res);
-            if (res.code === 200){
-                document.getElementById('show_account').innerText=res.data.uname;
+            if (res.code === 1) {
+                document.getElementById('show_account').innerText = res.data.uname;
             } else {
-                document.getElementById('show_account').innerText="请登录";
+                document.getElementById('show_account').innerText = "请登录";
+                mdui.snackbar({
+                    message: '没有登录',
+                    timeout: 2000,
+                    onClosed: function () {
+                        document.getElementById('show_account').innerText = "请登录";
+                    }
+                });
             }
         },
-        error:function () {
-            document.getElementById('show_account').innerText="请登录";
+        error: function () {
+            document.getElementById('show_account').innerText = "请登录";
+            mdui.snackbar({
+                message: '没有登录',
+                timeout: 2000,
+                onClosed: function () {
+                    document.getElementById('show_account').innerText = "请登录";
+                }
+            });
         }
     })
 
-}
+};
 
 // 对话框event示例
 var dialog = document.getElementById('dialog_login');
