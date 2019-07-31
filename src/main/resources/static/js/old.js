@@ -44,14 +44,14 @@ function renderTime(date) {
 function upWnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i-1].wnumber;
+        arr[i]=oldarr[i].wnumber;
     }
     return arr;
 };
 function upBnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i-1].bnumber;
+        arr[i]=oldarr[i].bnumber;
     }
     return arr;
 };
@@ -65,20 +65,18 @@ function upJnumber(oldarr) {
 function upKnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i-1].knumber;
+        arr[i]=oldarr[i].knumber;
     }
     return arr;
 };
 function upTime(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=String(renderTime(oldarr[len-i-1].kdate)).substr(8,10);
+        arr[i]=String(renderTime(oldarr[i].kdate)).substr(0,10);
     }
     return arr;
 };
 function DrawTable(valdata) {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'), 'customed');
 
     // 指定图表的配置项和数据
     var option = {
@@ -107,7 +105,7 @@ function DrawTable(valdata) {
             {
                 type: 'category',
                 boundaryGap: false,
-                data: ['周一','周二','周三','周四','周五','周六','周日']
+                data:[]
             }
         ],
         yAxis: [
@@ -195,9 +193,8 @@ function DrawTable(valdata) {
     var jump=upJnumber(jumps);
     var keepage=upKnumber(keepages);
     var times=upTime(keepages);
-    console.log(times)
-    //时间
-    option.xAxis.data=times;
+
+
     //心跳
     option.series[0].data=jump;
     //血压
@@ -206,8 +203,21 @@ function DrawTable(valdata) {
     option.series[2].data=weught;
     //综合得分
     option.series[3].data=keepage;
-
+    console.log(times)
+    option.xAxis.data=[
+        "1"+'\n',
+        "1+\\n"+'\n',
+        "1+\\n"+'\n',
+        "1+\\n"+'\n',
+        "1+\\n"+'\n',
+        "1+\\n"+'\n',
+        "1+\\n+'\\n'"
+    ];
+    console.log(option.xAxis.data)
     //console.log(option);
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'), 'customed');
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 
