@@ -241,7 +241,7 @@ $(document).ready(function () {
 
 //提交tab2的试卷
 $('#submit').click(function () {
-    var userAn = [];
+    var userAn = {};
     for(var i=0; i<5;i++) {
         console.log("oid: "+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id"));
         console.log("oright: "+$("input[name="+i+"]:checked").val());
@@ -260,16 +260,16 @@ $('#submit').click(function () {
         success(res) {
             //alert(res);
             console.log(res);
-            if (res.code === 200) {
+            if (res.code == 200) {
                 console.log("ok, next is pop");
                 mdui.snackbar({
-                    message: '发布成功',
+                    message: '',
                     timeout: 1500,
                     onClosed: function () {
                         window.location.reload();
                     }
                 });
-            } else {
+            } else if (res.code == 200) {
                 console.log("not ok, next is pop");
                 mdui.snackbar({
                     message: '发布失败',
