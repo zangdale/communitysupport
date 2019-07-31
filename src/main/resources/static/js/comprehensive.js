@@ -241,11 +241,14 @@ $(document).ready(function () {
 
 //提交tab2的试卷
 $('#submit').click(function () {
-    var userAn = {};
+    var userAn = "";
     for(var i=0; i<5;i++) {
         console.log("oid: "+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id"));
         console.log("oright: "+$("input[name="+i+"]:checked").val());
-       userAn.push({oid:$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id"),oright:$("input[name="+i+"]:checked").val()});
+       userAn+='{"oid":'+'"'+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id")+'",'+'"oright":'+'"'+$("input[name="+i+"]:checked").val()+'"'+'}';
+       if (i!=4) {
+           userAn+=',';
+       }
     }
 
     console.log(userAn);
@@ -263,11 +266,20 @@ $('#submit').click(function () {
             if (res.code == 200) {
                 console.log("ok, next is pop");
                 mdui.snackbar({
-                    message: '',
+                    message: '提交成功',
                     timeout: 1500,
                     onClosed: function () {
                         window.location.reload();
                     }
+                });
+                mdui.dialog({
+                    title: '再接再厉',
+                    content: '你的分数是: '+res.data.grade,
+                    buttons: [
+                        {
+                            text: '确认',
+                        }
+                    ]
                 });
             } else if (res.code == 200) {
                 console.log("not ok, next is pop");
@@ -362,4 +374,4 @@ $(document).ready(function () {
         );
     }
 })
-*/
+ */
