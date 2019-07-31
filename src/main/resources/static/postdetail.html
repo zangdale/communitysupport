@@ -27,33 +27,44 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mdui-card-actions mdui-text-right mdui-m-b-2">
-                        <button class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple" id="button_post">回复</button>
-                    </div>
+                    <div class="mdui-card-actions mdui-p-t-2 mdui-p-b-3 mdui-p-l-2 mdui-p-r-2 mycarddate">
+                        <div class="mdui-card-primary-subtitle mdui-m-r-1 ">臭弟第</div>
+                        <div class="mdui-card-primary-subtitle ">2019-07-29 17:17:23</div>
+                        <div class="mdui-toolbar-spacer"></div>
 
-                    <div class="mdui-dialog" id="dialog_post">
-                        <div class="mdui-dialog-content">
-                            <div class="mdui-dialog-title">发布回答</div>
-                            <div class="mdui-textfield ">
+                        <button style="float: right"
+                                class=" mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple"
+                                id="button_post">回复
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mdui-dialog" id="dialog_post">
+                    <div class="mdui-dialog-content">
+                        <div class="mdui-dialog-title">发布回答</div>
+                        <div class="mdui-textfield ">
                                 <textarea class="mdui-textfield-input" type="text" rows="4" placeholder="内容"
                                           id="input_test"></textarea>
-                            </div>
+                        </div>
 
-                            <div class="mdui-dialog-actions">
-                                <button class="mdui-btn mdui-text-color-black-secondary mdui-ripple" mdui-dialog-cancel>取消</button>
-                                <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>发布</button>
-                            </div>
+                        <div class="mdui-dialog-actions">
+                            <button class="mdui-btn mdui-text-color-black-secondary mdui-ripple" mdui-dialog-cancel>
+                                取消
+                            </button>
+                            <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>发布
+                            </button>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="mdui-card container-mylistcard">
-                    <ul class="mdui-list" id="list_answers">
-
-                    </ul>
-                </div>
             </div>
+
+            <div class="mdui-card container-mylistcard">
+                <ul class="mdui-list" id="list_answers">
+
+                </ul>
+            </div>
+        </div>
         </div>
         <div class="container-mypagebottom ">
             <div class="mdui-p-t-3 mdui-p-b-3">
