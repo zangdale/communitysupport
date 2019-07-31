@@ -33,6 +33,16 @@ public class VideoEntity {
      */
     private String vType;
 
+    private String vImageurl;
+
+    public String getvImageurl() {
+        return vImageurl;
+    }
+
+    public void setvImageurl(String vImageurl) {
+        this.vImageurl = vImageurl;
+    }
+
     /**
      * 
      * max-len: 255
@@ -73,5 +83,12 @@ public class VideoEntity {
     public void setVUrl(String vUrl){
         this.vUrl = vUrl;
     }
-    
+
+    public VideoEntity(Integer vId, String vName, String vType, String vImageurl, String vUrl) {
+        this.vId = vId;
+        this.vName = vName;
+        this.vType = vType;
+        this.vImageurl = vImageurl;
+        this.vUrl = vUrl;
+    }
 }

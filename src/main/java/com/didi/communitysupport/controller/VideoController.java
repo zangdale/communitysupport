@@ -30,14 +30,14 @@ public class VideoController {
      * 获取视频列表接口
      * @return list(question)问题的json列表
      */
-    @GetMapping(value = "/getvideolist")
+    @GetMapping(value = "/getvideo")
     public ResultVO getVideoList(){
         Map json = new HashMap();
         List<VideoEntity> Videolist= videoservice.getVideoList();
         if (Videolist==null){
-            return ResultVOUtil.error(ErrorEnum.E201);
+            return ResultVOUtil.error(ErrorEnum.E404);
         }
-        json.put("video",Videolist);
+        json.put("videos",Videolist);
         /**
          * vedio
          */

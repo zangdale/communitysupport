@@ -5,6 +5,7 @@
             <result column="v_id" property="vId"/>
             <result column="v_name" property="vName"/>
             <result column="v_type" property="vType"/>
+            <result column="v_imageurl" property="vImageurl"/>
             <result column="v_url" property="vUrl"/>
         </resultMap>
 
@@ -17,6 +18,7 @@
             <if test="vId != null">v_id,</if>
             <if test="vName != null">v_name,</if>
             <if test="vType != null">v_type,</if>
+            <if test="vImageurl != null">v_imageurl,</if>
             <if test="vUrl != null">v_url,</if>
         
         </trim>
@@ -26,6 +28,7 @@
             <if test="vId != null">#{vId},</if>
             <if test="vName != null">#{vName},</if>
             <if test="vType != null">#{vType},</if>
+            <if test="vImageurl != null">#{vImageurl},</if>
             <if test="vUrl != null">#{vUrl},</if>
         
         </trim>
@@ -36,6 +39,7 @@
             <if test="vId != null">AND v_id=#{vId}</if>
             <if test="vName != null">AND v_name=#{vName}</if>
             <if test="vType != null">AND v_type=#{vType}</if>
+            <if test="vImageurl != null">v_imageurl=#{vImageurl},</if>
             <if test="vUrl != null">AND v_url=#{vUrl}</if>
         
         </trim>
@@ -47,6 +51,7 @@
                 <if test="vId != null">v_id=#{vId},</if>
                 <if test="vName != null">v_name=#{vName},</if>
                 <if test="vType != null">v_type=#{vType},</if>
+                <if test="vImageurl != null">v_imageurl=#{vImageurl},</if>
                 <if test="vUrl != null">v_url=#{vUrl},</if>
             
             </trim>
