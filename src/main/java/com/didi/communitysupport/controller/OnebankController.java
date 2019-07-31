@@ -55,10 +55,11 @@ public class OnebankController {
     /**
      * 提交测试题	post	/submitonebank	json（onebanks）只存id和答案就可以				grade=数字 表示分数
      * @param request
-     * @return grade=数字 表示分数
+     * @return grade=数字 表示分数 ,required=true,defaultValue=""
      */
     @PostMapping("/submitonebank")
-    public ResultVO submitOneBank(@RequestParam(value = "onebanks",required=true,defaultValue="") String onebanks ,HttpServletRequest request) {
+    public ResultVO submitOneBank(@RequestParam(value = "onebanks") String onebanks ,HttpServletRequest request) {
+
         if (IsEmply.StringIsEmply(onebanks)) {
             return ResultVOUtil.error(ErrorEnum.E500);
         }

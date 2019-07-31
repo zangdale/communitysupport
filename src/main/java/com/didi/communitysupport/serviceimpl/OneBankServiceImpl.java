@@ -21,20 +21,23 @@ public class OneBankServiceImpl implements OneBankService {
 
     @Override
     public int SubmitOneBank(String onebanks) {
-        //System.out.println(onebanks);
+        //System.out.println("-0-------------->"+onebanks);
         onebanks = onebanks.replace("[", "");
         onebanks = onebanks.replace("{", "");
-        // System.out.println(onebanks);
+        //System.out.println("-0-------------->"+onebanks);
         String[] onebank = onebanks.split("},");
         int count = 0;
         int oid;
         int oright;
         OnebankEntity onebankEntity = null;
         for (String str : onebank) {
+            //System.out.println("---------------"+str);
             str = str.replace("}", "");
+            //System.out.println("---------------"+str);
             str = str.replace("\"oid\":", "");
+           // System.out.println("---------------"+str);
             str = str.replace("\"oright\":", "");
-            System.out.println(str);
+            System.out.println("---------------"+str);
             String[] s = str.split(",");
             oid=Integer.parseInt(s[0]);
             oright=Integer.parseInt(s[1]);

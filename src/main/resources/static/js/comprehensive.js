@@ -245,7 +245,7 @@ $('#submit').click(function () {
     for(var i=0; i<5;i++) {
         console.log("oid: "+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id"));
         console.log("oright: "+$("input[name="+i+"]:checked").val());
-       userAn+='{"oid":'+'"'+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id")+'",'+'"oright":'+'"'+$("input[name="+i+"]:checked").val()+'"'+'}';
+       userAn+='{"oid":'+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id")+','+'"oright":'+$("input[name="+i+"]:checked").val()+''+'}';
        if (i!=4) {
            userAn+=',';
        }
