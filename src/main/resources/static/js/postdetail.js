@@ -1,84 +1,42 @@
 //获取标题栏展示的用户名
-window.onload = function () {
+window.onload=function(){
     console.log("do get user name");
     $.ajax({
-        type: "get",
+        type:"get",
         url: "/getsession",
-        dataType: "json",
-        success: function (res) {
+        dataType:"json",
+        success:function (res) {
             console.log(res);
             //alert(res);
-            if (res.code === 1) {
-                document.getElementById('show_account').innerText = data.user.uname;
+            if (res.code === 200){
+                document.getElementById('show_account').innerText=res.data.uname;
             } else {
-                document.getElementById('show_account').innerText = "请登录";
+                document.getElementById('show_account').innerText="请登录";
             }
         },
-        error: function () {
-            document.getElementById('show_account').innerText = "请登录";
+        error:function () {
+            document.getElementById('show_account').innerText="请登录";
         }
     })
 
-};
+}
 
-//打开发帖对话框
+//打开回帖对话框
 var inst = new mdui.Dialog('#dialog_post');
 
 document.getElementById('button_post').addEventListener('click', function () {
     inst.open();
 });
 
-//点击对话框发布按钮
-var dialog = document.getElementById('dialog_post');
-
-dialog.addEventListener('confirm.mdui.dialog', function () {
-    $.ajax({
-        type:"post",
-        url: "/addquestion",
-        data: {
-            qtitle:$("#input_title").val(),
-            qtext:$("#input_test").val()
-        },
-        dataType:"json",
-        success(res) {
-            //alert(res);
-            console.log(res);
-            if (res.code === 200){
-                console.log("ok, next is pop");
-                mdui.snackbar({
-                    message: '发布成功',
-                    timeout: 1500,
-                    onClosed: function () {
-                        window.location.reload();
-                    }
-                });
-            } else {
-                console.log("not ok, next is pop");
-                mdui.snackbar({
-                    message: '发布失败',
-                    timeout: 1500
-                });
-            }
-        },
-        error:function (XMLHttpRequest, textStatus, errorThrown) {
-            // 状态码
-            console.log(XMLHttpRequest.status);
-            // 状态
-            console.log(XMLHttpRequest.readyState);
-            // 错误信息
-            console.log(textStatus);
-        }
-    })
-    console.log('confirm');
-});
-
-
-//获得问题列表
+//获得回帖列表
 window.onload = function () {
-    console.log("do get question list");
+    console.log("do get answer list");
     $.ajax({
         type: "get",
-        url: "/getquestionlist",
+        url: "/getquestion",
+        data: {
+            qid:getQueryVariable("qid")
+        },
         dataType: "json",
         success: function (res) {
             console.log(res);
@@ -86,7 +44,7 @@ window.onload = function () {
             if (res.code === 200) {
                 var list = res.data.questions;
                 for (var i = list.length-1; i >= 0 ; i--) {
-                    $('#list_questions').append(
+                    $('#list_answers').append(
                         "<li class=\"mdui-list-item mdui-ripple\" id=\"question_list_child\" value=\""+list[i].qid+"\">\n" +
                         "                                <div class=\"mdui-list-item-content\">\n" +
                         "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
@@ -104,14 +62,14 @@ window.onload = function () {
                         "                            </li>"
                     );
                     if (i!=0) {
-                        $('#list_questions').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
+                        $('#list_answers').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
                     }
                 }
 
             }
         },
         error:function () {
-            $('#list_questions').append("<div class=\"mdui-list-item-title mdui-text-center mdui-btn-bold mdui-m-t-2 mdui-m-b-2\">网络错误</div>");
+            $('#list_answers').append("<div class=\"mdui-list-item-title mdui-text-center mdui-btn-bold mdui-m-t-2 mdui-m-b-2\">网络错误</div>");
         }
     })
 };
@@ -137,7 +95,7 @@ $(document).ready(function () {
         }
     ];
     for (var i = list.length-1; i >= 0 ; i--) {
-        $('#list_questions').append(
+        $('#list_answers').append(
             "<li class=\"mdui-list-item mdui-ripple\" id=\"question_list_child\" value=\""+list[i].qid+"\">\n" +
             "                                <div class=\"mdui-list-item-content\">\n" +
             "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
@@ -155,18 +113,22 @@ $(document).ready(function () {
             "                            </li>"
         );
         if (i!=0) {
-            $('#list_questions').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
+            $('#list_answers').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
         }
     }
 });
 
-//点击帖子进入详细信息
-$('#list_questions').on("click","#question_list_child",function () {
-    console.log("this is "+$(this).val());
-    window.location.href="postdetail.html"+"?qid="+$(this).val();
-});
+function getQueryVariable(variable)
+{
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+}
 
-function renderTime(date) {
-    var date = new Date(date).toJSON();
-    return new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-};
+$(document).ready(function () {
+    console.log("this: "+window.location.search.substring(1));
+})

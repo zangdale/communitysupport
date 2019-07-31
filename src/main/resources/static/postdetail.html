@@ -11,50 +11,47 @@
                     <span class="mdui-typo-title">智慧医养公共服务平台</span>
                     <div class="mdui-toolbar-spacer"></div>
                     <div class="mdui-typo-subheading" id="show_account"></div>
-                    <a id="button_login" class="mdui-btn mdui-btn-icon "><i
-                            class="mdui-icon material-icons">account_circle</i></a>
+                    <a id="button_login" class="mdui-btn mdui-btn-icon ">
+                        <i class="mdui-icon material-icons">account_circle</i>
+                    </a>
                 </div>
             </div>
             <div class="mdui-container container-mypaddingforhide">
-                <div id="tab1">
-                    <div class="mdui-card container-mylistcard">
-                        <ul class="mdui-list" id="list_questions">
-
-                        </ul>
+                <div class="mdui-card mdui-m-b-3">
+                    <div class="mdui-card-media">
+                        <div class="mdui-c  ard-media-covered mdui-card-media-covered-top">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-card-primary-title">孩子老拉稀，咋办啊大夫?</div>
+                                <pre class="mdui-card-primary-subtitle myquestioncard">咋办啊大夫,咋办啊大夫,
+                                        你会不会啊大夫？</pre>
+                            </div>
+                        </div>
                     </div>
-
-                    <button class="mdui-fab mdui-fab-fixed mdui-color-amber" id="button_post">
-                        <i class="mdui-icon material-icons">mode_edit</i>
-                    </button>
+                    <div class="mdui-card-actions mdui-text-right mdui-m-b-2">
+                        <button class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple" id="button_post">回复</button>
+                    </div>
 
                     <div class="mdui-dialog" id="dialog_post">
                         <div class="mdui-dialog-content">
-                            <div class="mdui-dialog-title">发布问题</div>
-                            <div class="mdui-textfield ">
-                                <textarea class="mdui-textfield-input" type="text" placeholder="标题"
-                                          id="input_title"></textarea>
-                            </div>
+                            <div class="mdui-dialog-title">发布回答</div>
                             <div class="mdui-textfield ">
                                 <textarea class="mdui-textfield-input" type="text" rows="4" placeholder="内容"
                                           id="input_test"></textarea>
                             </div>
 
                             <div class="mdui-dialog-actions">
-                                <button class="mdui-btn mdui-text-color-black-secondary mdui-ripple" mdui-dialog-cancel>
-                                    取消
-                                </button>
-                                <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>发布
-                                </button>
+                                <button class="mdui-btn mdui-text-color-black-secondary mdui-ripple" mdui-dialog-cancel>取消</button>
+                                <button class="mdui-btn mdui-color-theme-500 mdui-ripple" mdui-dialog-confirm>发布</button>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div id="tab2">
 
-                </div>
-                <div id="tab3">
+                <div class="mdui-card container-mylistcard">
+                    <ul class="mdui-list" id="list_answers">
 
+                    </ul>
                 </div>
             </div>
         </div>
@@ -71,7 +68,7 @@
     </body>
     <script src="./js/mdui.js"></script>
     <script src="js/jquery-min.js"></script>
-    <script src="js/comprehensive.js"></script>
+    <script src="js/postdetail.js"></script>
     <link rel="stylesheet" href="./css/mdui.css">
     <link rel="stylesheet" href="./css/mycss.css">
 </html>

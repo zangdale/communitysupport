@@ -39,3 +39,8 @@
 .container-mylistcard{
 
 }
+
+.myquestioncard{
+    white-space: pre-line;
+    word-wrap: break-word;
+}
