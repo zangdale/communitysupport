@@ -188,8 +188,6 @@ function renderTime(date) {
     return new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
 };
 
-var onebank;
-
 //获得tab2的试卷
 $(document).ready(function () {
     console.log("do get question list");
@@ -202,7 +200,6 @@ $(document).ready(function () {
             //alert(res);
             if (res.code === 200) {
                 var list = res.data.onebanks;
-                onebank = res.data.onebanks;
                 for (var i = 0; i < list.length; i++) {
                     $('#exam_paper').append(
                         "<div class=\"container-myselector\"  name=\""+i+" \" id=\""+list[i].oid+"\">\n" +
@@ -212,8 +209,8 @@ $(document).ready(function () {
                         "                                    <div class=\"mdui-col\">\n" +
                         "                                        <label class=\"mdui-radio\">\n" +
                         "                                            <input type=\"radio\" name=\""+i+"\" value=\"1\" />\n" +
-                        "                                            <i class=\"mdui-radio-icon\"></i>\n" + list[i].oanswer1 +
-                        "                                        </label>\n" +
+                        "                                            <i class=\"mdui-radio-icon\"></i><p style='display: flex'>\n" + list[i].oanswer1 +
+                        "                                        </p></label>\n" +
                         "                                    </div>\n" +
                         "                                    <div class=\"mdui-col\">\n" +
                         "                                        <label class=\"mdui-radio\">\n" +
@@ -337,10 +334,10 @@ $(document).ready(function () {
     ];
     for (var i = 0; i < list.length; i++) {
         $('#exam_paper').append(
-            "<div class=\"container-myselector\"  name=\""+i+" \" id=\""+list[i].oid+"\">\n" +
-            "                            <p class=\"mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600\">"+list[i].otitle+"</p>\n" +
+            "<div class=\"mdui-m-b-4\"  name=\""+i+" \" id=\""+list[i].oid+"\">\n" +
+            "                            <p class=\"mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600\">"+(i+1)+". "+list[i].otitle+"</p>\n" +
             "                            <form>\n" +
-            "                                <div class=\"mdui-row-xs-3\" style=\"margin-top: 5px\">\n" +
+            "                                <div class=\"mdui-row-xs-1\" style=\"margin-top: 5px\">\n" +
             "                                    <div class=\"mdui-col\">\n" +
             "                                        <label class=\"mdui-radio\">\n" +
             "                                            <input type=\"radio\" name=\""+i+"\" value=\"1\" />\n" +
@@ -348,7 +345,7 @@ $(document).ready(function () {
             "                                        </label>\n" +
             "                                    </div>\n" +
             "                                    <div class=\"mdui-col\">\n" +
-            "                                        <label class=\"mdui-radio\">\n" +
+            "                                          <label class=\"mdui-radio\">\n" +
             "                                            <input type=\"radio\" name=\""+i+"\" value=\"2\"/>\n" +
             "                                            <i class=\"mdui-radio-icon\"></i>\n" + list[i].oanswer2 +
             "                                        </label>\n" +
