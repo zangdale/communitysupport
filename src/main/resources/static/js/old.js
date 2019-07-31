@@ -44,35 +44,35 @@ function renderTime(date) {
 function upWnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i].wnumber;
+        arr[i]=oldarr[len-i-1].wnumber;
     }
     return arr;
 };
 function upBnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i].bnumber;
+        arr[i]=oldarr[len-i-1].bnumber;
     }
     return arr;
 };
 function upJnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i].jnumber;
+        arr[i]=oldarr[len-i-1].jnumber;
     }
     return arr;
 };
 function upKnumber(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=oldarr[len-i].knumber;
+        arr[i]=oldarr[len-i-1].knumber;
     }
     return arr;
 };
 function upTime(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=String(renderTime(oldarr[len-i].kdate)).substr(0,10);
+        arr[i]=String(renderTime(oldarr[len-i-1].kdate)).substr(8,10);
     }
     return arr;
 };
