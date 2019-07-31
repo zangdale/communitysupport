@@ -87,7 +87,7 @@ window.onload = function () {
                 var list = res.data.questions;
                 for (var i = list.length-1; i >= 0 ; i--) {
                     $('#list_questions').append(
-                        "<li class=\"mdui-list-item mdui-ripple\">\n" +
+                        "<li class=\"mdui-list-item mdui-ripple\" id=\"question_list_child\" value=\""+list[i].qid+"\">\n" +
                         "                                <div class=\"mdui-list-item-content\">\n" +
                         "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
                         "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
@@ -115,7 +115,6 @@ window.onload = function () {
         }
     })
 };
-
 /*
 //debug
 $(document).ready(function () {
@@ -139,7 +138,7 @@ $(document).ready(function () {
     ];
     for (var i = list.length-1; i >= 0 ; i--) {
         $('#list_questions').append(
-            "<li class=\"mdui-list-item mdui-ripple\">\n" +
+            "<li class=\"mdui-list-item mdui-ripple\" id=\"question_list_child\" value=\""+list[i].qid+"\">\n" +
             "                                <div class=\"mdui-list-item-content\">\n" +
             "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
             "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
@@ -161,8 +160,13 @@ $(document).ready(function () {
     }
 });
 */
+//点击帖子进入详细信息
+$('#list_questions').on("click","#question_list_child",function () {
+    console.log("this is "+$(this).val());
+    window.location.href="comprehensive.html"+"?qid="+$(this).val();
+});
 
 function renderTime(date) {
-    var dateee = new Date(date).toJSON();
-    return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+    var datee = new Date(date).toJSON();
+    return new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
 };
