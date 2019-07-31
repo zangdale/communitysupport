@@ -98,4 +98,7 @@ $('#card_com').click(function () {
     window.location.href="comprehensive.html";
 });
 
-
+//打开卡片二
+$('#card_old').click(function () {
+    window.location.href="old.html";
+});

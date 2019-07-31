@@ -53,3 +53,7 @@
 .mycarddate{
     display: flex;
 }
+
+.mycontent{
+    font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
+}
