@@ -64,7 +64,7 @@
     </sql>
 
     <select id="getAll" parameterType="Object" resultMap="onebankEntityMap">
-        SELECT * FROM onebank
+        SELECT  o_id,o_title,o_answer1,o_answer2,o_answer3 FROM onebank
     </select>
     
     <select id="getByCondition" parameterType="Object" resultMap="onebankEntityMap">

@@ -24,7 +24,7 @@ window.onload = function () {
         url: "/getcheck",
         dataType: "json",
         success: function (res) {
-            console.log(res.code);
+            console.log(res);
             //alert(res);
             if (res.code === 200) {
                 DrawTable(res.data);
@@ -72,7 +72,7 @@ function upKnumber(oldarr) {
 function upTime(oldarr) {
     var arr=new Array();
     for (var i=0,len=oldarr.length; i<len; i++) {
-        arr[i]=renderTime(oldarr[i].kdate);
+        arr[i]=String(renderTime(oldarr[i].kdate)).substr(0,10);
     }
     return arr;
 };
@@ -107,7 +107,7 @@ function DrawTable(valdata) {
             {
                 type: 'category',
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                data: ['周一','周二','周三','周四','周五','周六','周日']
             }
         ],
         yAxis: [
@@ -122,7 +122,7 @@ function DrawTable(valdata) {
             {
                 name: '心跳',
                 type: 'line',
-                data: [11, 11, 15, 13, 12, 13, 10],
+                data: [],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -138,7 +138,7 @@ function DrawTable(valdata) {
             {
                 name: '血压',
                 type: 'line',
-                data: [1, -2, 2, 5, 3, 2, 0],
+                data: [],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -154,7 +154,7 @@ function DrawTable(valdata) {
             {
                 name: '体重',
                 type: 'line',
-                data: [130, 125, 126, 125, 123, 124, 121],
+                data: [],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -169,7 +169,7 @@ function DrawTable(valdata) {
             }, {
                 name: '综合得分',
                 type: 'line',
-                data: [90, 100, 85, 98, 95, 100, 98],
+                data: [],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -195,7 +195,7 @@ function DrawTable(valdata) {
     var jump=upJnumber(jumps);
     var keepage=upKnumber(keepages);
     var times=upTime(keepages);
-
+    console.log(times)
     //时间
     option.xAxis.data=times;
     //心跳
@@ -207,6 +207,7 @@ function DrawTable(valdata) {
     //综合得分
     option.series[3].data=keepage;
 
+    //console.log(option);
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 
