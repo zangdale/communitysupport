@@ -9,6 +9,18 @@
     min-height: 800px;
 }
 
+.background-picture-forold{
+    background:url(../picture/tiananmen-003.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-size: cover;
+    width: auto;
+    height: auto;
+    min-height: 800px;
+    filter: blur(20px);
+}
+
 .card-style{
     margin-top: 0 !important;
 }
@@ -55,5 +67,7 @@
 }
 
 .mycontent{
-    font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
+    display: block;
+    font-size: 14px;
+    line-height: 24px;
 }
