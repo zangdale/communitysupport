@@ -202,18 +202,18 @@ $(document).ready(function () {
                 var list = res.data.onebanks;
                 for (var i = 0; i < list.length; i++) {
                     $('#exam_paper').append(
-                        "<div class=\"container-myselector\"  name=\""+i+" \" id=\""+list[i].oid+"\">\n" +
-                        "                            <p class=\"mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600\">"+list[i].otitle+"</p>\n" +
+                        "<div class=\"mdui-m-b-4\"  name=\""+i+" \" id=\""+list[i].oid+"\">\n" +
+                        "                            <p class=\"mdui-btn-bold mdui-m-r-3 mdui-text-color-grey-600\">"+(i+1)+". "+list[i].otitle+"</p>\n" +
                         "                            <form>\n" +
-                        "                                <div class=\"mdui-row-xs-3\" style=\"margin-top: 5px\">\n" +
+                        "                                <div class=\"mdui-row-xs-1\" style=\"margin-top: 5px\">\n" +
                         "                                    <div class=\"mdui-col\">\n" +
                         "                                        <label class=\"mdui-radio\">\n" +
                         "                                            <input type=\"radio\" name=\""+i+"\" value=\"1\" />\n" +
-                        "                                            <i class=\"mdui-radio-icon\"></i><p style='display: flex'>\n" + list[i].oanswer1 +
-                        "                                        </p></label>\n" +
+                        "                                            <i class=\"mdui-radio-icon\"></i>\n" + list[i].oanswer1 +
+                        "                                        </label>\n" +
                         "                                    </div>\n" +
                         "                                    <div class=\"mdui-col\">\n" +
-                        "                                        <label class=\"mdui-radio\">\n" +
+                        "                                          <label class=\"mdui-radio\">\n" +
                         "                                            <input type=\"radio\" name=\""+i+"\" value=\"2\"/>\n" +
                         "                                            <i class=\"mdui-radio-icon\"></i>\n" + list[i].oanswer2 +
                         "                                        </label>\n" +
@@ -243,9 +243,9 @@ $(document).ready(function () {
 $('#submit').click(function () {
     var userAn = [];
     for(var i=0; i<5;i++) {
-        console.log("oid: "+$("input[name="+i+"]:checked").closest('div.container-myselector').attr("id"));
+        console.log("oid: "+$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id"));
         console.log("oright: "+$("input[name="+i+"]:checked").val());
-       userAn.push({oid:$("input[name="+i+"]:checked").closest('div.container-myselector').attr("id"),oright:$("input[name="+i+"]:checked").val()});
+       userAn.push({oid:$("input[name="+i+"]:checked").closest('div.mdui-m-b-4').attr("id"),oright:$("input[name="+i+"]:checked").val()});
     }
 
     console.log(userAn);
@@ -287,7 +287,7 @@ $('#submit').click(function () {
         }
     })
 })
-
+/*
 //debug get list
 $(document).ready(function () {
     var list = [
@@ -362,3 +362,4 @@ $(document).ready(function () {
         );
     }
 })
+*/
