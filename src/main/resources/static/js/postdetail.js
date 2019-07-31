@@ -42,27 +42,29 @@ window.onload = function () {
             console.log(res);
             //alert(res);
             if (res.code === 200) {
-                var list = res.data.questions;
-                for (var i = list.length-1; i >= 0 ; i--) {
+                var list = res.data;
+
+                //问题
+                $('#an_title').text(list.question.qtitle);
+                $('#an_text').text(list.question.qtext);
+                $('#an_name').text(list.question.uName);
+                $('#an_date').text(renderTime(list.question.qdate));
+
+                //答案
+                for (var i = 0; i < list.answers.length ; i++) {
                     $('#list_answers').append(
-                        "<li class=\"mdui-list-item mdui-ripple\" id=\"question_list_child\" value=\""+list[i].qid+"\">\n" +
-                        "                                <div class=\"mdui-list-item-content\">\n" +
-                        "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
-                        "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
-                        "                                        <span class=\"mdui-text-color-theme-text\">"+list[i].qtext+"" +
-                        "                                        </span>\n" +
-                        "                                    </div>\n" +
-                        "                                </div>\n" +
-                        "                                <div class=\"mdui-list-item-content mdui-text-right\">\n" +
-                        "                                    <div class=\"mdui-list-item-text\">"+list[i].uName+"</div>\n" +
-                        "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
-                        "                                        <span class=\"mdui-text-color-theme-text\">"+renderTime(list[i].qdate)+"</span>\n" +
-                        "                                    </div>\n" +
-                        "                                </div>\n" +
-                        "                            </li>"
+                        " <div class=\"mdui-list\">\n" +
+                        "                        <div class=\"mdui-p-l-2 mdui-p-r-2\">\n" +
+                        "                            <p class=\"mycontent myquestioncard\">"+list.answers[i].atext+"</p>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"mdui-card-actions mdui-p-t-2 mdui-p-b-2 mdui-p-l-2 mdui-p-r-2 mycarddate\">\n" +
+                        "                            <div class=\"mdui-card-primary-subtitle mdui-m-r-1 \">"+list.answers[i].uName+"</div>\n" +
+                        "                            <div class=\"mdui-card-primary-subtitle \">"+renderTime(list.answers[i].adate)+"</div>\n" +
+                        "                        </div>\n" +
+                        "                    </div>"
                     );
-                    if (i!=0) {
-                        $('#list_answers').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
+                    if (i!=list.answers.length-1) {
+                        $('#list_answers').append("<div class=\"mdui-divider mdui-m-y-0\"></div>");
                     }
                 }
 
@@ -74,10 +76,11 @@ window.onload = function () {
     })
 };
 
+/*
 //debug
 $(document).ready(function () {
-    var list = [
-        {
+    var list = {
+        "question":{
             "uName":"1",
             "qid":0,
             "qtitle":"测试",
@@ -85,39 +88,53 @@ $(document).ready(function () {
             "quserid":1,
             "qdate":"2019-07-29T17:16:50.000+0000"
         },
-        {
-            "uName":"1",
-            "qid":1,
-            "qtitle":"测试1",
-            "qtext":"承德市",
-            "quserid":1,
-            "qdate":"2019-07-29T17:17:23.000+0000"
-        }
-    ];
-    for (var i = list.length-1; i >= 0 ; i--) {
+        "answers":[
+            {
+                "uName":"1",
+                "aid":0,
+                "atext":"哈哈哈哈",
+                "aquestionid":0,
+                "auserid":1,
+                "adate":"2019-07-29T17:17:59.000+0000"
+            },
+            {
+                "uName":"1",
+                "aid":1,
+                "atext":"1",
+                "aquestionid":0,
+                "auserid":2,
+                "adate":"2019-07-29T20:37:27.000+0000"
+            }
+        ]
+    };
+
+    //问题
+    $('#an_title').text(list.question.qtitle);
+    $('#an_text').text(list.question.qtext);
+    $('#an_name').text(list.question.uName);
+    $('#an_date').text(renderTime(list.question.qdate));
+
+    //答案
+    for (var i = 0; i < list.answers.length ; i++) {
         $('#list_answers').append(
-            "<li class=\"mdui-list-item mdui-ripple\" id=\"question_list_child\" value=\""+list[i].qid+"\">\n" +
-            "                                <div class=\"mdui-list-item-content\">\n" +
-            "                                    <div class=\"mdui-list-item-title\">"+list[i].qtitle+"</div>\n" +
-            "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
-            "                                        <span class=\"mdui-text-color-theme-text\">"+list[i].qtext+"" +
-            "                                        </span>\n" +
-            "                                    </div>\n" +
-            "                                </div>\n" +
-            "                                <div class=\"mdui-list-item-content mdui-text-right\">\n" +
-            "                                    <div class=\"mdui-list-item-text\">"+list[i].uName+"</div>\n" +
-            "                                    <div class=\"mdui-list-item-text mdui-list-item-one-line\">\n" +
-            "                                        <span class=\"mdui-text-color-theme-text\">"+renderTime(list[i].qdate)+"</span>\n" +
-            "                                    </div>\n" +
-            "                                </div>\n" +
-            "                            </li>"
+           " <div class=\"mdui-list\">\n" +
+            "                        <div class=\"mdui-p-l-2 mdui-p-r-2\">\n" +
+            "                            <p class=\"mycontent myquestioncard\">"+list.answers[i].atext+"</p>\n" +
+            "                        </div>\n" +
+            "                        <div class=\"mdui-card-actions mdui-p-t-2 mdui-p-b-2 mdui-p-l-2 mdui-p-r-2 mycarddate\">\n" +
+            "                            <div class=\"mdui-card-primary-subtitle mdui-m-r-1 \">"+list.answers[i].uName+"</div>\n" +
+            "                            <div class=\"mdui-card-primary-subtitle \">"+renderTime(list.answers[i].adate)+"</div>\n" +
+            "                        </div>\n" +
+            "                    </div>"
         );
-        if (i!=0) {
-            $('#list_answers').append("<li class=\"mdui-divider mdui-m-y-0\"></li>");
+        if (i!=list.answers.length-1) {
+            $('#list_answers').append("<div class=\"mdui-divider mdui-m-y-0\"></div>");
         }
     }
 });
+*/
 
+//取url参数
 function getQueryVariable(variable)
 {
     var query = window.location.search.substring(1);
@@ -129,6 +146,7 @@ function getQueryVariable(variable)
     return(false);
 }
 
-$(document).ready(function () {
-    console.log("this: "+window.location.search.substring(1));
-})
+function renderTime(date) {
+    var date = new Date(date).toJSON();
+    return new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+};

@@ -116,6 +116,7 @@ window.onload = function () {
     })
 };
 
+/*
 //debug
 $(document).ready(function () {
     var list = [
@@ -159,6 +160,8 @@ $(document).ready(function () {
         }
     }
 });
+*/
+
 
 //点击帖子进入详细信息
 $('#list_questions').on("click","#question_list_child",function () {
