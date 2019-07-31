@@ -28,6 +28,50 @@ document.getElementById('button_post').addEventListener('click', function () {
     inst.open();
 });
 
+//确定回复
+var dialog = document.getElementById('dialog_post');
+
+dialog.addEventListener('confirm.mdui.dialog', function () {
+    $.ajax({
+        type:"post",
+        url: "/addanswer",
+        data: {
+            qid:getQueryVariable("qid"),
+            atext:$("#input_test").val()
+        },
+        dataType:"json",
+        success(res) {
+            //alert(res);
+            console.log(res);
+            if (res.code === 200){
+                console.log("ok, next is pop");
+                mdui.snackbar({
+                    message: '回复成功',
+                    timeout: 1500,
+                    onClosed: function () {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                console.log("not ok, next is pop");
+                mdui.snackbar({
+                    message: '回复失败',
+                    timeout: 1500
+                });
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
+        }
+    })
+    console.log('confirm');
+});
+
 //获得回帖列表
 window.onload = function () {
     console.log("do get answer list");
