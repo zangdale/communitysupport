@@ -60,7 +60,7 @@
     </sql>
 
     <select id="getAllQuestion" parameterType="Object" resultMap="questionEntityMap">
-        SELECT  <include refid="fields"/>  FROM question,user where user.u_id=question.q_userid
+        SELECT  <include refid="fields"/>  FROM question,user where user.u_id=question.q_userid ORDER BY q_date
     </select>
 
     <select id="getByCondition" parameterType="Object" resultMap="questionEntityMap">

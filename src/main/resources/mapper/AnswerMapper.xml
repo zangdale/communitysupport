@@ -66,7 +66,7 @@
     </select>
         
     <select id="getByAQuestionid" parameterType="Object" resultMap="answerEntityMap">
-        SELECT <include refid="fields"/> FROM answer , user WHERE a_questionid=#{aQuestionid} and answer.a_userid=user.u_id
+        SELECT <include refid="fields"/> FROM answer , user WHERE a_questionid=#{aQuestionid} and answer.a_userid=user.u_id ORDER BY a_date
     </select>
         
     <select id="getByAUserid" parameterType="Object" resultMap="answerEntityMap">
