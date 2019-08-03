@@ -41,7 +41,7 @@
                 "color": "#333"
             },
             "subtextStyle": {
-                "color": "#aaa"
+                "color": "#ffffff"
             }
         },
         "line": {

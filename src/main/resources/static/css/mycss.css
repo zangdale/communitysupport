@@ -1,5 +1,5 @@
-.background-picture{
-    background:url(../picture/tiananmen-003.png);
+.background-picture {
+    background: url(../picture/tiananmen-003.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: local;
@@ -9,8 +9,8 @@
     min-height: 800px;
 }
 
-.background-picture-forold{
-    background:url(../picture/tiananmen-003.png);
+.background-picture-blur {
+    background: url(../picture/tiananmen-003-blur.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: local;
@@ -18,24 +18,29 @@
     width: auto;
     height: auto;
     min-height: 800px;
-    filter: blur(20px):;
 }
 
-.card-style{
+.div-forold {
+    padding-top: 20px;
+    width: auto;
+    height: 600px;
+}
+
+.card-style {
     margin-top: 0 !important;
 }
 
-.container-mylist{
+.container-mylist {
     max-width: 550px;
 }
 
-.container-myselector{
+.container-myselector {
     display: flex;
     padding-top: 16px;
     padding-bottom: 8px;
 }
 
-.container-mypagebottom{
+.container-mypagebottom {
     width: auto;
     height: 140px;
     background-color: #313131;
@@ -43,36 +48,36 @@
     z-index: -999;
 }
 
-.container-mypaddingforhide{
+.container-mypaddingforhide {
     padding-top: 160px;
     padding-bottom: 160px;
 }
 
-.container-mypaddingforanlist{
+.container-mypaddingforanlist {
     padding-top: 40px;
     padding-bottom: 30px;
 }
 
-.container-mylistcard{
+.container-mylistcard {
 
 }
 
-.myquestioncard{
+.myquestioncard {
     white-space: pre-line;
     word-wrap: break-word;
 }
 
-.mycarddate{
+.mycarddate {
     display: flex;
 }
 
-.mycontent{
+.mycontent {
     display: block;
     font-size: 14px;
     line-height: 24px;
 }
 
-.mylistforinfo{
+.mylistforinfo {
     display: flex;
     min-height: 48px;
     box-sizing: border-box;
