@@ -20,7 +20,7 @@ window.onload = function () {
                         "            </video>\n" +
                         "            <div class=\"mdui-text-center\">\n" +
                         "                <div class=\"mdui-typo-title mdui-color-blue-grey title\">\n" +
-                        "                    <h3 class=\"mdui-text-color-amber-a700 \">\"" +list[i].vname+"\"</h3>\n" +
+                        "                    <h3 class=\"mdui-text-color-amber-a700 \">" +list[i].vname+"</h3>\n" +
                         "                </div>\n" +
                         "               <span class=\"mdui-text-color-orange-800 \">视频类型：</span>\n" +
                         "                <div class=\"mdui-chip video-type \">\n" +
@@ -28,7 +28,7 @@ window.onload = function () {
                         "\n" +
                         "                </div>\n" +
                         "                <div class=\"mdui-chip  video-type \">\n" +
-                        "                    <span class=\"mdui-chip-title \">\"" +list[i].vtype+"\"</span>\n" +
+                        "                    <span class=\"mdui-chip-title  \" >"+list[i].vtype+"</span>\n" +
                         "\n" +
                         "                </div>\n" +
                         "                <div class=\"mdui-chip  video-type \">\n" +
@@ -37,9 +37,9 @@ window.onload = function () {
                         "                </div>\n" +
                         "                <div><h4>\n" +
                         "                    <span class=\"mdui-text-color-pink-700\">播放数：</span>\n" +
-                        "                    <span class=\"mdui-text-color-purple-200\">\"" +(600+i)+"\"</span><br><br>\n" +
+                        "                    <span class=\"mdui-text-color-purple-200\" >"+(600+i)+"</span><br><br>\n" +
                         "                    <span class=\"mdui-text-color-orange-200\">评论：</span>\n" +
-                        "                    <span class=\"mdui-text-color-red-a700\">\"" +(500+i)+"\"</span>\n" +
+                        "                    <span class=\"mdui-text-color-red-a700\" >"+(450+i)+"</span>\n" +
                         "                </h4></div>\n" +
                         "            </div>\n" +
                         "            <!-- 视频页面-->\n" +
