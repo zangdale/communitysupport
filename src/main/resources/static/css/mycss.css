@@ -71,3 +71,12 @@
     font-size: 14px;
     line-height: 24px;
 }
+
+.mylistforinfo{
+    display: flex;
+    min-height: 48px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    text-decoration: none;
+
+}

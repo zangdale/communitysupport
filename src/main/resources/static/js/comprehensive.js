@@ -375,3 +375,96 @@ $(document).ready(function () {
     }
 })
  */
+
+//tab3个人信息获取
+$(document).ready(function () {
+    console.log("do get question list");
+    $.ajax({
+        type: "get",
+        url: "/getarchives",
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            //alert(res);
+            if (res.code === 200) {
+                var list_user = res.data.user;
+                var list_ill = res.data.ills;
+
+                $('#info_name').text(list_user.uname);
+                $('#info_age').text(list_user.uage);
+                $('#info_tel').text(list_user.utel);
+                $('#info_account').text(list_user.uaccount);
+                $('#info_type').text(list_user.utype);
+                $('#info_oldtype').text(list_user.uoldtype);
+
+                for (var i;i<list_ill.length;i++){
+                    $('#list_ill').append(
+                        "<tr>\n" +
+                        "                                <td>"+list_ill[i].iid+"</td>\n" +
+                        "                                <td>"+list_ill[i].ititle+"</td>\n" +
+                        "                                <td>"+renderTime(list_ill[i].idate)+"</td>\n" +
+                        "                            </tr>"
+                    )
+                }
+
+            }
+        },
+        error: function () {
+            $('#list_info').append("<div class=\"mdui-list-item-title mdui-text-center mdui-btn-bold mdui-m-t-2 mdui-m-b-2\">网络错误</div>");
+        }
+    })
+});
+
+//debug
+$(document).ready(function () {
+    var list_user = {
+        "uid":1,
+        "uname":"弟弟",
+        "utype":"神",
+        "utel":"666-666666",
+        "uoldtype":"天堂",
+        "uaccount":"666",
+        "upasswd":"NULL",
+        "uage":9999999
+    };
+    var list_ill = [
+        {
+            "iid":1,
+            "iuserid":1,
+            "ititle":"心肌梗塞",
+            "idate":"2018-05-05T00:00:00.000+0000"
+        },{
+            "iid":2,
+            "iuserid":1,
+            "ititle":"骨髓癌",
+            "idate":"2018-05-05T00:00:00.000+0000"
+        },{
+            "iid":3,
+            "iuserid":1,
+            "ititle":"艾滋病",
+            "idate":"2018-05-05T00:00:00.000+0000"
+        }
+    ];
+
+    $('#info_name').text(list_user.uname);
+    $('#info_age').text(list_user.uage);
+    $('#info_tel').text(list_user.utel);
+    $('#info_account').text(list_user.uaccount);
+    $('#info_type').text(list_user.utype);
+    $('#info_oldtype').text(list_user.uoldtype);
+
+    for (var i;i<list_ill.length;i++){
+        $('#list_ill').append(
+            "<tr>\n" +
+            "                                <td>"+list_ill[i].iid+"</td>\n" +
+            "                                <td>"+list_ill[i].ititle+"</td>\n" +
+            "                                <td>"+renderTime(list_ill[i].idate)+"</td>\n" +
+            "                            </tr>"
+        )
+    };
+});
+
+function renderTime(date) {
+    var date = new Date(date).toJSON();
+    return new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+};
