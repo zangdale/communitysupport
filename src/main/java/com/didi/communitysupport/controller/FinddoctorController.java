@@ -38,7 +38,12 @@ public class FinddoctorController {
      * @return list(question)问题的json列表
      */
     @GetMapping(value = "/getquestionlist")
-    public ResultVO getQuestionList() {
+    public ResultVO getQuestionList(HttpServletRequest request) {
+        UserEntity user = VERBUtil.getUserSession(request);
+        System.out.println(user);
+        if (user == null) {
+            return ResultVOUtil.error(ErrorEnum.E201);
+        }
         Map json = new HashMap();
         List<QuestionEntity> questionlist = finddoctorService.getQuestionList();
         if (questionlist == null) {
@@ -54,9 +59,14 @@ public class FinddoctorController {
      * @return question和list（answer）json
      */
     @GetMapping(value = "/getquestion")
-    public ResultVO getQuestion(@RequestParam(value="qid",required=true,defaultValue="-1") int qid) {
+    public ResultVO getQuestion(@RequestParam(value="qid",required=true,defaultValue="-1") int qid,HttpServletRequest request) {
         if (qid == -1) {
             return ResultVOUtil.error(ErrorEnum.E500);
+        }
+        UserEntity user = VERBUtil.getUserSession(request);
+        System.out.println(user);
+        if (user == null) {
+            return ResultVOUtil.error(ErrorEnum.E201);
         }
         Map json = new HashMap();
         QuestionEntity q = finddoctorService.getQuestion(qid);
