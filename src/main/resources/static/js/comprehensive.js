@@ -58,6 +58,7 @@ dialog.addEventListener('confirm.mdui.dialog', function () {
             //alert(res);
             console.log(res);
             if (res.code === 200) {
+
                 console.log("ok, next is pop");
                 mdui.snackbar({
                     message: '发布成功',
