@@ -10,7 +10,7 @@ window.onload = function () {
             console.log(res);
             //alert(res);
             if (res.code === 200) {
-                var list = res.data.video;
+                var list = res.data.videos;
 
                 for(var i = 0;i < list.length;i++){
                     $('#allbox').append(

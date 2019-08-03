@@ -2,7 +2,9 @@ package com.didi.communitysupport;
 
 
 import com.didi.communitysupport.dao.UserMapper;
+import com.didi.communitysupport.dao.VideoMapper;
 import com.didi.communitysupport.domain.UserEntity;
+import com.didi.communitysupport.domain.VideoEntity;
 import com.didi.communitysupport.service.LoginService;
 import com.didi.communitysupport.serviceimpl.LoginServiceImpl;
 import org.json.JSONObject;
@@ -22,10 +24,12 @@ import java.util.List;
 public class CommunitysupportApplicationTests {
     @Resource
     LoginService loginService;
+    @Autowired
+    VideoMapper vm;
     @Test
     public void contextLoads() {
-        UserEntity user = new UserEntity();
-        user.setUId(111);
+        List<VideoEntity> list = vm.getAllVideo();
+        System.out.println(list);
 
     }
 
