@@ -1,4 +1,3 @@
-//获取标题栏展示的用户名
 window.onload = function () {
     console.log("do get user name");
     $.ajax({
@@ -11,7 +10,6 @@ window.onload = function () {
             if (res.code === 200) {
                 document.getElementById('show_account').innerText = res.data.uname;
             } else {
-                document.getElementById('show_account').innerText = "请登录";
                 mdui.snackbar({
                     message: '没有登录',
                     timeout: 2000,
@@ -23,17 +21,9 @@ window.onload = function () {
         },
         error: function () {
             document.getElementById('show_account').innerText = "请登录";
-            mdui.snackbar({
-                message: '没有登录',
-                timeout: 2000,
-                onClosed: function () {
-                    document.getElementById('show_account').innerText = "请登录";
-                }
-            });
         }
-    })
-
-};
+    });
+}
 
 //打开发帖对话框
 var inst = new mdui.Dialog('#dialog_post');
@@ -398,7 +388,7 @@ $(document).ready(function () {
                 $('#info_type').text(list_user.utype);
                 $('#info_oldtype').text(list_user.uoldtype);
 
-                for (var i;i<list_ill.length;i++){
+                for (var i=0;i<list_ill.length;i++){
                     $('#list_ill').append(
                         "<tr>\n" +
                         "                                <td>"+list_ill[i].iid+"</td>\n" +
