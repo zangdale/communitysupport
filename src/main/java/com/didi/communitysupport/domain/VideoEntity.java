@@ -91,4 +91,7 @@ public class VideoEntity {
         this.vImageurl = vImageurl;
         this.vUrl = vUrl;
     }
+    public VideoEntity() {
+
+    }
 }
