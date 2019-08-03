@@ -407,6 +407,14 @@ $(document).ready(function () {
                     )
                 }
 
+            }else{
+                mdui.snackbar({
+                    message: '没有登录',
+                    timeout: 2000,
+                    onClosed: function () {
+                        document.getElementById('show_account').innerText = "请登录";
+                    }
+                });
             }
         },
         error: function () {
@@ -415,54 +423,54 @@ $(document).ready(function () {
     })
 });
 
-//debug
-$(document).ready(function () {
-    var list_user = {
-        "uid":1,
-        "uname":"弟弟",
-        "utype":"神",
-        "utel":"666-666666",
-        "uoldtype":"天堂",
-        "uaccount":"666",
-        "upasswd":"NULL",
-        "uage":9999999
-    };
-    var list_ill = [
-        {
-            "iid":1,
-            "iuserid":1,
-            "ititle":"心肌梗塞",
-            "idate":"2018-05-05T00:00:00.000+0000"
-        },{
-            "iid":2,
-            "iuserid":1,
-            "ititle":"骨髓癌",
-            "idate":"2018-05-05T00:00:00.000+0000"
-        },{
-            "iid":3,
-            "iuserid":1,
-            "ititle":"艾滋病",
-            "idate":"2018-05-05T00:00:00.000+0000"
-        }
-    ];
-
-    $('#info_name').text(list_user.uname);
-    $('#info_age').text(list_user.uage);
-    $('#info_tel').text(list_user.utel);
-    $('#info_account').text(list_user.uaccount);
-    $('#info_type').text(list_user.utype);
-    $('#info_oldtype').text(list_user.uoldtype);
-
-    for (var i;i<list_ill.length;i++){
-        $('#list_ill').append(
-            "<tr>\n" +
-            "                                <td>"+list_ill[i].iid+"</td>\n" +
-            "                                <td>"+list_ill[i].ititle+"</td>\n" +
-            "                                <td>"+renderTime(list_ill[i].idate)+"</td>\n" +
-            "                            </tr>"
-        )
-    };
-});
+// //debug
+// $(document).ready(function () {
+//     var list_user = {
+//         "uid":1,
+//         "uname":"弟弟",
+//         "utype":"神",
+//         "utel":"666-666666",
+//         "uoldtype":"天堂",
+//         "uaccount":"666",
+//         "upasswd":"NULL",
+//         "uage":9999999
+//     };
+//     var list_ill = [
+//         {
+//             "iid":1,
+//             "iuserid":1,
+//             "ititle":"心肌梗塞",
+//             "idate":"2018-05-05T00:00:00.000+0000"
+//         },{
+//             "iid":2,
+//             "iuserid":1,
+//             "ititle":"骨髓癌",
+//             "idate":"2018-05-05T00:00:00.000+0000"
+//         },{
+//             "iid":3,
+//             "iuserid":1,
+//             "ititle":"艾滋病",
+//             "idate":"2018-05-05T00:00:00.000+0000"
+//         }
+//     ];
+//
+//     $('#info_name').text(list_user.uname);
+//     $('#info_age').text(list_user.uage);
+//     $('#info_tel').text(list_user.utel);
+//     $('#info_account').text(list_user.uaccount);
+//     $('#info_type').text(list_user.utype);
+//     $('#info_oldtype').text(list_user.uoldtype);
+//
+//     for (var i;i<list_ill.length;i++){
+//         $('#list_ill').append(
+//             "<tr>\n" +
+//             "                                <td>"+list_ill[i].iid+"</td>\n" +
+//             "                                <td>"+list_ill[i].ititle+"</td>\n" +
+//             "                                <td>"+renderTime(list_ill[i].idate)+"</td>\n" +
+//             "                            </tr>"
+//         )
+//     };
+// });
 
 function renderTime(date) {
     var date = new Date(date).toJSON();
