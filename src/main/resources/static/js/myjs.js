@@ -116,3 +116,8 @@ $('#card_com').click(function () {
 $('#card_old').click(function () {
     window.location.href="old.html";
 });
+
+//打开卡片三
+$('#card_old').click(function () {
+    window.location.href="video.html";
+});
