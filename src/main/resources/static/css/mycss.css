@@ -18,7 +18,7 @@
     width: auto;
     height: auto;
     min-height: 800px;
-    filter: blur(20px);
+    filter: blur(20px):;
 }
 
 .card-style{
