@@ -1,4 +1,4 @@
-window.onload = function () {
+$(document).ready(function () {
     console.log("do get user name");
     $.ajax({
         type: "get",
@@ -23,7 +23,8 @@ window.onload = function () {
             document.getElementById('show_account').innerText = "请登录";
         }
     });
-}
+});
+
 
 //打开发帖对话框
 var inst = new mdui.Dialog('#dialog_post');
