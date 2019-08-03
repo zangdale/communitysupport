@@ -375,3 +375,59 @@ $(document).ready(function () {
     }
 })
  */
+
+//tab3个人信息获取
+$(document).ready(function () {
+    console.log("do get question list");
+    $.ajax({
+        type: "get",
+        url: "/getarchives",
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            //alert(res);
+            if (res.code === 200) {
+                var list_user = res.data.user;
+                var list_ill = res.data.ills;
+
+
+
+            }
+        },
+        error: function () {
+            $('#exam_paper').append("<div class=\"mdui-list-item-title mdui-text-center mdui-btn-bold mdui-m-t-2 mdui-m-b-2\">网络错误</div>");
+        }
+    })
+});
+
+//debug
+$(document).ready(function () {
+    var list_user = {
+        "uid":1,
+        "uname":"弟弟",
+        "utype":"神",
+        "utel":"666-666666",
+        "uoldtype":"天堂",
+        "uaccount":"666",
+        "upasswd":"NULL",
+        "uage":-1
+    };
+    var list_ill = [
+        {
+            "iid":1,
+            "iuserid":1,
+            "ititle":"心肌梗塞",
+            "idate":"2018-05-05T00:00:00.000+0000"
+        },{
+            "iid":2,
+            "iuserid":1,
+            "ititle":"骨髓癌",
+            "idate":"2018-05-05T00:00:00.000+0000"
+        },{
+            "iid":3,
+            "iuserid":1,
+            "ititle":"艾滋病",
+            "idate":"2018-05-05T00:00:00.000+0000"
+        }
+    ]
+}
