@@ -461,7 +461,7 @@ $(document).ready(function () {
             "                                <td>"+renderTime(list_ill[i].idate)+"</td>\n" +
             "                            </tr>"
         )
-    }
+    };
 });
 
 function renderTime(date) {
