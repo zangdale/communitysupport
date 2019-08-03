@@ -118,6 +118,6 @@ $('#card_old').click(function () {
 });
 
 //打开卡片三
-$('#card_old').click(function () {
+$('#card_health').click(function () {
     window.location.href="video.html";
 });
