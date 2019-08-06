@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2019-07-31 20:27:45
+Date: 2019-08-06 11:01:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `answer` (
   KEY `a_questionid` (`a_questionid`),
   CONSTRAINT `a_questionid` FOREIGN KEY (`a_questionid`) REFERENCES `question` (`q_id`),
   CONSTRAINT `a_userid` FOREIGN KEY (`a_userid`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of answer
@@ -39,6 +39,13 @@ INSERT INTO `answer` VALUES ('1', '水电费水电费水电费', '1', '4', '2019
 INSERT INTO `answer` VALUES ('2', '发生的股份', '2', '5', '2019-07-24 15:22:38');
 INSERT INTO `answer` VALUES ('3', '好久好久军或或或或', '1', '3', '2019-07-29 15:22:54');
 INSERT INTO `answer` VALUES ('4', '奥斯卡就都不卡手机绑定卡萨九点半', '2', '3', '2019-07-30 08:33:52');
+INSERT INTO `answer` VALUES ('5', '哈师大ksdasldk', '11', '1', '2019-07-31 13:00:42');
+INSERT INTO `answer` VALUES ('6', 'asjkknkxjcm螺丝孔大检查你肯定你 ', '13', '1', '2019-07-31 13:50:35');
+INSERT INTO `answer` VALUES ('7', '阿贾克斯发吧jkbcfjsbucsasklndfk', '13', '1', '2019-07-31 13:50:44');
+INSERT INTO `answer` VALUES ('8', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊 ', '13', '1', '2019-07-31 13:50:54');
+INSERT INTO `answer` VALUES ('9', 'sad斯柯达 ', '13', '1', '2019-08-03 05:21:50');
+INSERT INTO `answer` VALUES ('10', '阿拉斯加电脑卡十九大 ', '16', '1', '2019-08-03 08:03:02');
+INSERT INTO `answer` VALUES ('11', 'dakudhkaubd', '17', '1', '2019-08-06 02:44:51');
 
 -- ----------------------------
 -- Table structure for blood
@@ -167,7 +174,7 @@ CREATE TABLE `question` (
   PRIMARY KEY (`q_id`),
   KEY `q_userid` (`q_userid`),
   CONSTRAINT `q_userid` FOREIGN KEY (`q_userid`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of question
@@ -183,6 +190,12 @@ INSERT INTO `question` VALUES ('8', '面授阶段你快来', '暗示领导讲话
 INSERT INTO `question` VALUES ('9', '哈哈哈', 'hhhh', '1', '2019-07-30 07:44:36');
 INSERT INTO `question` VALUES ('10', '花开时接电话', 'hhhh', '1', '2019-07-30 07:48:42');
 INSERT INTO `question` VALUES ('11', '测试发帖', '测试kdjla阿斯顿撒多', '6', '2019-07-30 12:38:40');
+INSERT INTO `question` VALUES ('12', 'aksjdbkasj', 'sdnkfkjn', '1', '2019-07-31 13:50:10');
+INSERT INTO `question` VALUES ('13', 'inagaiuhdiasb ', 'abhfjashbdjha sjc', '1', '2019-07-31 13:50:23');
+INSERT INTO `question` VALUES ('14', '你说你是谁?', '我不知道自己是谁', '1', '2019-08-03 05:22:12');
+INSERT INTO `question` VALUES ('15', '孩子老拉稀怎么办?', '一天到晚刺啦刺啦', '1', '2019-08-03 05:22:52');
+INSERT INTO `question` VALUES ('16', '孩子肺热怎么办', '肺热咳嗽', '1', '2019-08-03 05:23:14');
+INSERT INTO `question` VALUES ('17', 'dsfsdf', 'sfsfdfsdf', '1', '2019-08-06 02:44:41');
 
 -- ----------------------------
 -- Table structure for user
