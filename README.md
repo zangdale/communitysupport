@@ -1,25 +1,19 @@
 # communitysupport
 
 #### 介绍
-成都华迪的Javaee的教程笔记和代码。
+
+多人开发的一个前后端分离项目。
 
 #### 软件架构
 软件架构说明
  spring boot
- html+css+js
+ html+css+js+mdui
 
+#### 设计过程
 
-#### 安装教程
+koco为项目经理，设计文档如下
+[https://docs.qq.com/sheet/DTm9rd0VUcWVJZFRX?c=A1A0K0](http://https://docs.qq.com/sheet/DTm9rd0VUcWVJZFRX?c=A1A0K0)
 
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
 
 #### 参与贡献
 
