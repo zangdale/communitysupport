@@ -12,7 +12,7 @@
 #### 设计过程
 
 koco为项目经理，设计文档如下
-[https://docs.qq.com/sheet/DTm9rd0VUcWVJZFRX?c=A1A0K0](http://https://docs.qq.com/sheet/DTm9rd0VUcWVJZFRX?c=A1A0K0)
+[https://docs.qq.com/sheet/DTm9rd0VUcWVJZFRX](https://docs.qq.com/sheet/DTm9rd0VUcWVJZFRX)
 
 
 #### 参与贡献
